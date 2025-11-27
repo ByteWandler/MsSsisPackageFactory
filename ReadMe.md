@@ -1,0 +1,2 @@
+<%= MsSsisPackageFactory %>
+<%= project.description %>
