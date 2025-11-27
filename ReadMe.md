@@ -1,2 +1,3 @@
-<%= MsSsisPackageFactory %>
-<%= project.description %>
+# MsSsisPackageFactory
+
+Beschreibung folgt ...
