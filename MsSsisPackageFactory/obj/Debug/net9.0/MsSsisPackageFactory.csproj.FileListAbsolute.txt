@@ -1,0 +1,4 @@
+C:\Users\Dimitri\Desktop\Guliver\tools\MsSsisPackageFactory\MsSsisPackageFactory\obj\Debug\net9.0\MsSsisPackageFactory.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dimitri\Desktop\Guliver\tools\MsSsisPackageFactory\MsSsisPackageFactory\obj\Debug\net9.0\MsSsisPackageFactory.AssemblyInfoInputs.cache
+C:\Users\Dimitri\Desktop\Guliver\tools\MsSsisPackageFactory\MsSsisPackageFactory\obj\Debug\net9.0\MsSsisPackageFactory.AssemblyInfo.cs
+C:\Users\Dimitri\Desktop\Guliver\tools\MsSsisPackageFactory\MsSsisPackageFactory\obj\Debug\net9.0\MsSsisPackageFactory.csproj.CoreCompileInputs.cache

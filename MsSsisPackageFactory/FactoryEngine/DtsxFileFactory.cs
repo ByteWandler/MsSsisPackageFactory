@@ -1,5 +1,7 @@
-﻿using MsSsisPackageFactory.MetadataManagement;
-using MsSsisPackageFactory.MetadataManagement.Model;
+﻿using MsSsisPackageFactory.MetadataManagement.Configuration;
+using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
+using MsSsisPackageFactory.MetadataManagement.DbMetadata;
+using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,15 +43,15 @@ namespace MsSsisPackageFactory.FactoryEngine
             this.xmlNamespaceManager = nsmgr;
         }
 
-        public void CreatePackage(DbMetaData dbMetaData, UserConfiguration userConfig, string templateFileName)
+        public void CreatePackage(DbMetaData dbMetaData, UserConfiguration userConfig)
         {
-            this.xmlDocument.Load(templateFileName);
+            this.xmlDocument.Load(userConfig.TemplateFileName);
 
             WriteTransferStructureExec();
             WriteTransformAndTransferExec();
             WriteTransferSqlServerObjectsExec();
             
-            this.xmlDocument.Save(CreateNewFileName(Path.GetFileName(templateFileName)));
+            this.xmlDocument.Save(CreateNewFileName(Path.GetFileName(userConfig.TemplateFileName)));
         }
 
         private string CreateNewFileName(string oldFileName)
@@ -61,7 +63,7 @@ namespace MsSsisPackageFactory.FactoryEngine
             return $"{oldFileName} {dateTime}.dtsx";
         }
 
-        void CreateVariablesForTable(XmlNode variablesNode, string tableName, List<string> columnNames)
+        private void CreateVariablesForTable(XmlNode variablesNode, string tableName, List<string> columnNames)
         {
             string ns = xmlNamespaceManager.LookupNamespace("DTS");
             // _DestName Variable
@@ -97,14 +99,14 @@ namespace MsSsisPackageFactory.FactoryEngine
             variablesNode.AppendChild(selectVar);
         }
 
-        void WriteTransferStructureExec()
+        private void WriteTransferStructureExec()
         {
             XmlNode taskData = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer structure']/DTS:ObjectData/TransferSqlServerObjectsTaskData", xmlNamespaceManager);
 
             taskData.Attributes["TablesList"].Value = GetTablesList();
         }
 
-        void WriteTransformAndTransferExec()
+        private void WriteTransformAndTransferExec()
         {
             XmlNode components = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/components", xmlNamespaceManager);
             XmlNode paths = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/paths", xmlNamespaceManager);

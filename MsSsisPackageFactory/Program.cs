@@ -1,9 +1,8 @@
 ﻿using MsSsisPackageFactory.FactoryEngine;
 using MsSsisPackageFactory.MetadataManagement;
+using MsSsisPackageFactory.MetadataManagement.Configuration;
+using MsSsisPackageFactory.MetadataManagement.DbMetadata;
 using MsSsisPackageFactory.Orchestration;
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-using System.Xml;
 
 namespace MsSsisPackageFactory
 {
@@ -16,7 +15,12 @@ namespace MsSsisPackageFactory
     {
         static void Main(string[] args)
         {
-            var factoryController = new FactoryController(new DbMetadataManager(), new ConfigdataManager(), new ConsistencyValidator(), new DtsxFileFactory());
+            IConfigurationProvider configurationProvider = new ConfigdataManager();
+            IMetadataProvider metadataProvider = new DbMetadataManager(configurationProvider.CurrentConfiguration.Database.ConnectionString);
+            IConsistencyValidator validator = new ConsistencyValidator();
+            IPackageBuilder packageBuilder = new DtsxFileFactory();
+
+            (new FactoryController(metadataProvider, configurationProvider, validator, packageBuilder)).Run();
         }
     }
 }
