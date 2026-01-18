@@ -2,12 +2,7 @@
 using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
 using MsSsisPackageFactory.MetadataManagement.DbMetadata;
 using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace MsSsisPackageFactory.FactoryEngine
@@ -17,41 +12,31 @@ namespace MsSsisPackageFactory.FactoryEngine
     /// </summary>
     internal class DtsxFileFactory : IPackageBuilder
     {
-        ConfigdataManager configurations;
-        DbMetadataManager metadata;
-        XmlDocument xmlDocument;
-        XmlNamespaceManager xmlNamespaceManager;
+        private readonly IConfigurationProvider _configurations;
+        private readonly IMetadataProvider _metadata;
+        private readonly XmlDocument _xmlDocument;
+        private readonly XmlNamespaceManager _xmlNamespaceManager;
 
-        // Temp
-        List<string> tables = new List<string> { "Shippers" }; //, "Orders" };
-        Dictionary<string, List<string>> columns = new Dictionary<string, List<string>>
+        public DtsxFileFactory(IConfigurationProvider configurationProvider, IMetadataProvider metadataProvider)
         {
-            { "Shippers", new List<string> { "ShipperID", "CompanyName", "Phone" } }//,
-            //{ "Orders", new List<string> { "OrderID", "CustomerID", "OrderDate" } }
-        };
-
-        public DtsxFileFactory()
-        {
-            this.xmlDocument = new XmlDocument();
-            configurations = new ConfigdataManager();
-            metadata = new DbMetadataManager();
+            this._xmlDocument = new XmlDocument();
+            this._configurations = configurationProvider;
+            this._metadata = metadataProvider;
 
             // XML-Namespace hinzufügen
-            XmlNamespaceManager nsmgr = new XmlNamespaceManager(xmlDocument.NameTable);
-            nsmgr.AddNamespace("DTS", "www.microsoft.com/SqlServer/Dts");
-
-            this.xmlNamespaceManager = nsmgr;
+            this._xmlNamespaceManager = new XmlNamespaceManager(this._xmlDocument.NameTable);
+            this._xmlNamespaceManager.AddNamespace("DTS", "www.microsoft.com/SqlServer/Dts");
         }
 
         public void CreatePackage(DbMetaData dbMetaData, UserConfiguration userConfig)
         {
-            this.xmlDocument.Load(userConfig.TemplateFileName);
+            this._xmlDocument.Load(userConfig.TemplateFileName);
 
-            WriteTransferStructureExec();
-            WriteTransformAndTransferExec();
-            WriteTransferSqlServerObjectsExec();
+            this.WriteTransferStructureExec();
+            this.WriteTransformAndTransferExec();
+            this.WriteTransferSqlServerObjectsExec();
             
-            this.xmlDocument.Save(CreateNewFileName(Path.GetFileName(userConfig.TemplateFileName)));
+            this._xmlDocument.Save(CreateNewFileName(userConfig.TemplateFileName));
         }
 
         private string CreateNewFileName(string oldFileName)
@@ -63,11 +48,11 @@ namespace MsSsisPackageFactory.FactoryEngine
             return $"{oldFileName} {dateTime}.dtsx";
         }
 
-        private void CreateVariablesForTable(XmlNode variablesNode, string tableName, List<string> columnNames)
+        private void CreateVariablesForTable(XmlNode variablesNode, string tableName, List<TableColumn> columns)
         {
-            string ns = xmlNamespaceManager.LookupNamespace("DTS");
+            string ns = _xmlNamespaceManager.LookupNamespace("DTS");
             // _DestName Variable
-            XmlElement destVar = xmlDocument.CreateElement("DTS:Variable", ns);
+            XmlElement destVar = _xmlDocument.CreateElement("DTS:Variable", ns);
             destVar.SetAttribute("CreationName", ns, "");
             destVar.SetAttribute("DTSID", ns, "{" + Guid.NewGuid().ToString().ToUpper() + "}");
             destVar.SetAttribute("EvaluateAsExpression", ns, "True");
@@ -76,21 +61,21 @@ namespace MsSsisPackageFactory.FactoryEngine
             destVar.SetAttribute("Namespace", ns, "User");
             destVar.SetAttribute("ObjectName", ns, tableName + "_DestName");
 
-            XmlElement destValue = xmlDocument.CreateElement("DTS:VariableValue");
+            XmlElement destValue = _xmlDocument.CreateElement("DTS:VariableValue");
             destValue.SetAttribute("DataType", ns, "8");
             destValue.InnerText = "[].dbo." + tableName;
             destVar.AppendChild(destValue);
 
             // _SelectCmd Variable
-            XmlElement selectVar = xmlDocument.CreateElement("DTS:Variable", ns);
+            XmlElement selectVar = _xmlDocument.CreateElement("DTS:Variable", ns);
             selectVar.SetAttribute("CreationName", ns, "");
             selectVar.SetAttribute("DTSID", ns, "{" + Guid.NewGuid().ToString().ToUpper() + "}");
             selectVar.SetAttribute("IncludeInDebugDump", ns, "2345");
             selectVar.SetAttribute("Namespace", ns, "User");
             selectVar.SetAttribute("ObjectName", ns, tableName + "_SelectCmd");
 
-            string selectCmd = "SELECT [" + string.Join("], [", columnNames) + "] FROM [NorthWind].[dbo].[" + tableName + "]"; // Passe [NorthWind] an deine Source-DB an
-            XmlElement selectValue = xmlDocument.CreateElement("DTS:VariableValue", ns);
+            string selectCmd = "SELECT [" + string.Join("], [", columns) + "] FROM [NorthWind].[dbo].[" + tableName + "]"; // Passe [NorthWind] an deine Source-DB an
+            XmlElement selectValue = _xmlDocument.CreateElement("DTS:VariableValue", ns);
             selectValue.SetAttribute("DataType", ns, "8");
             selectValue.InnerText = selectCmd;
             selectVar.AppendChild(selectValue);
@@ -101,33 +86,33 @@ namespace MsSsisPackageFactory.FactoryEngine
 
         private void WriteTransferStructureExec()
         {
-            XmlNode taskData = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer structure']/DTS:ObjectData/TransferSqlServerObjectsTaskData", xmlNamespaceManager);
+            XmlNode taskData = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer structure']/DTS:ObjectData/TransferSqlServerObjectsTaskData", _xmlNamespaceManager);
 
-            taskData.Attributes["TablesList"].Value = GetTablesList();
+            taskData.Attributes["TablesList"].Value = CreateDtsTablesList(this._metadata.CurrentDbMetaData.Tables);
         }
 
         private void WriteTransformAndTransferExec()
         {
-            XmlNode components = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/components", xmlNamespaceManager);
-            XmlNode paths = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/paths", xmlNamespaceManager);
+            XmlNode components = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/components", _xmlNamespaceManager);
+            XmlNode paths = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/paths", _xmlNamespaceManager);
 
             // Variablen-Node finden (für dynamische Variablen pro Tabelle)
-            XmlNode variablesNode = xmlDocument.SelectSingleNode("DTS:Executable/DTS:Variables", xmlNamespaceManager);
+            XmlNode variablesNode = _xmlDocument.SelectSingleNode("DTS:Executable/DTS:Variables", _xmlNamespaceManager);
 
             int index = 0; // Für eindeutige Namen, z.B. "Quelle 0 - Shippers", "Quelle 1 - Orders"
-            foreach (var tableName in tables)
+            foreach (DatabaseTable table in this._metadata.CurrentDbMetaData.Tables)
             {
-                string sourceName = $"Quelle {index} - {tableName}";
-                string destinationName = $"Ziel {index} - {tableName}";
+                string sourceName = $"Quelle {index} - {table.TableName}";
+                string destinationName = $"Ziel {index} - {table.TableName}";
 
                 // Variablen für diese Tabelle erstellen (dynamisch)
-                CreateVariablesForTable(variablesNode, tableName, columns[tableName]);
+                CreateVariablesForTable(variablesNode, table.TableName, table.Columns);
 
                 // Quell-Komponente erstellen
-                XmlElement sourceComponent = CreateSourceComponent(tableName, columns[tableName], sourceName);
+                XmlElement sourceComponent = CreateSourceComponent(table.TableName, table.Columns, sourceName);
 
                 // Ziel-Komponente erstellen
-                XmlElement destinationComponent = CreateTargetComponent(tableName, columns[tableName], destinationName);
+                XmlElement destinationComponent = CreateTargetComponent(table.TableName, table.Columns, destinationName);
 
                 // Füge die Komponenten an die richtige Stelle im XML-Dokument ein
                 components.AppendChild(sourceComponent);
@@ -136,10 +121,10 @@ namespace MsSsisPackageFactory.FactoryEngine
         }
 
         #region WriteTransformAndTransferExec Helpers
-        XmlElement CreateSourceComponent(string tableName, List<string> columnNames, string componentName)
+        XmlElement CreateSourceComponent(string tableName, List<TableColumn> columns, string componentName)
         {
             // Komponente erstellen (basierend auf Template für "Quelle 0 - Shippers")
-            XmlElement component = xmlDocument.CreateElement("component");
+            XmlElement component = _xmlDocument.CreateElement("component");
             component.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}");
             component.SetAttribute("componentClassID", "Microsoft.OLEDBSource");
             component.SetAttribute("contactInfo", "OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4");
@@ -150,7 +135,7 @@ namespace MsSsisPackageFactory.FactoryEngine
             component.SetAttribute("version", "4");
 
             // <properties>
-            XmlElement properties = xmlDocument.CreateElement("properties");
+            XmlElement properties = _xmlDocument.CreateElement("properties");
             AddProperty(properties, "AccessMode", "3", "System.Int32", "Gibt den Modus zum Abrufen von Daten aus der Quelle an.");
             AddProperty(properties, "OpenRowset", "", "System.String", "Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an.");
             AddProperty(properties, "OpenRowsetVariable", "", "System.String", "Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält.");
@@ -162,8 +147,8 @@ namespace MsSsisPackageFactory.FactoryEngine
             component.AppendChild(properties);
 
             // <connections>
-            XmlElement connections = xmlDocument.CreateElement("connections");
-            XmlElement connection = xmlDocument.CreateElement("connection");
+            XmlElement connections = _xmlDocument.CreateElement("connections");
+            XmlElement connection = _xmlDocument.CreateElement("connection");
             connection.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Connections[OleDbConnection]");
             connection.SetAttribute("connectionManagerID", "Package.ConnectionManagers[OledbSourceConnection]");
             connection.SetAttribute("connectionManagerRefId", "Package.ConnectionManagers[OledbSourceConnection]");
@@ -173,39 +158,39 @@ namespace MsSsisPackageFactory.FactoryEngine
             component.AppendChild(connections);
 
             // <outputs>
-            XmlElement outputs = xmlDocument.CreateElement("outputs");
+            XmlElement outputs = _xmlDocument.CreateElement("outputs");
 
             // Erste Output: Ausgabe der OLE DB-Quelle
-            XmlElement output1 = xmlDocument.CreateElement("output");
+            XmlElement output1 = _xmlDocument.CreateElement("output");
             output1.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Outputs[Ausgabe der OLE DB-Quelle]");
             output1.SetAttribute("name", "Ausgabe der OLE DB-Quelle");
-            XmlElement outputColumns1 = xmlDocument.CreateElement("outputColumns");
-            foreach (var col in columnNames)
+            XmlElement outputColumns1 = _xmlDocument.CreateElement("outputColumns");
+            foreach (TableColumn col in columns)
             {
-                AddOutputColumn(outputColumns1, col, GetDataTypeForColumn(col), GetLengthForColumn(col), $"Package\\Transform and transfer\\{componentName}.Outputs[Ausgabe der OLE DB-Quelle].Columns[{col}]");
+                AddOutputColumn(outputColumns1, col.ColumnName, GetDataTypeForColumn(col.ColumnName), GetLengthForColumn(col.ColumnName), $"Package\\Transform and transfer\\{componentName}.Outputs[Ausgabe der OLE DB-Quelle].Columns[{col.ColumnName}]");
             }
             output1.AppendChild(outputColumns1);
-            XmlElement externalMetadataColumns1 = xmlDocument.CreateElement("externalMetadataColumns");
+            XmlElement externalMetadataColumns1 = _xmlDocument.CreateElement("externalMetadataColumns");
             externalMetadataColumns1.SetAttribute("isUsed", "True");
-            foreach (var col in columnNames)
+            foreach (TableColumn col in columns)
             {
-                AddExternalMetadataColumn(externalMetadataColumns1, col, componentName, GetDataTypeForColumn(col), GetLengthForColumn(col));
+                AddExternalMetadataColumn(externalMetadataColumns1, col.ColumnName, componentName, GetDataTypeForColumn(col.ColumnName), GetLengthForColumn(col.ColumnName));
             }
             output1.AppendChild(externalMetadataColumns1);
             outputs.AppendChild(output1);
 
             // Zweite Output: Fehlerausgabe
-            XmlElement output2 = xmlDocument.CreateElement("output");
+            XmlElement output2 = _xmlDocument.CreateElement("output");
             output2.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Outputs[Fehlerausgabe der OLE DB-Quelle]");
             output2.SetAttribute("isErrorOut", "true");
             output2.SetAttribute("name", "Fehlerausgabe der OLE DB-Quelle");
-            XmlElement outputColumns2 = xmlDocument.CreateElement("outputColumns");
-            foreach (var col in columnNames)
+            XmlElement outputColumns2 = _xmlDocument.CreateElement("outputColumns");
+            foreach (TableColumn col in columns)
             {
-                AddOutputColumn(outputColumns2, col, GetDataTypeForColumn(col), GetLengthForColumn(col), $"Package\\Transform and transfer\\{componentName}.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[{col}]");
+                AddOutputColumn(outputColumns2, col.ColumnName, GetDataTypeForColumn(col.ColumnName), GetLengthForColumn(col.ColumnName), $"Package\\Transform and transfer\\{componentName}.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[{col.ColumnName}]");
             }
             output2.AppendChild(outputColumns2);
-            XmlElement externalMetadataColumns2 = xmlDocument.CreateElement("externalMetadataColumns");
+            XmlElement externalMetadataColumns2 = _xmlDocument.CreateElement("externalMetadataColumns");
             output2.AppendChild(externalMetadataColumns2);
             outputs.AppendChild(output2);
 
@@ -214,10 +199,10 @@ namespace MsSsisPackageFactory.FactoryEngine
             return component;
         }
 
-        XmlElement CreateTargetComponent(string tableName, List<string> columnNames, string componentName)
+        XmlElement CreateTargetComponent(string tableName, List<TableColumn> columns, string componentName)
         {
             // Komponente erstellen (basierend auf Template für "Ziel 0 - Shippers")
-            XmlElement component = xmlDocument.CreateElement("component");
+            XmlElement component = _xmlDocument.CreateElement("component");
             component.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}");
             component.SetAttribute("componentClassID", "Microsoft.OLEDBDestination");
             component.SetAttribute("contactInfo", "OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4");
@@ -228,7 +213,7 @@ namespace MsSsisPackageFactory.FactoryEngine
             component.SetAttribute("version", "4");
 
             // <properties>
-            XmlElement properties = xmlDocument.CreateElement("properties");
+            XmlElement properties = _xmlDocument.CreateElement("properties");
             AddProperty(properties, "CommandTimeout", "0", "System.Int32", "Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert \"0\" zeigt einen unendlichen Timeoutwert an.");
             AddProperty(properties, "OpenRowset", "", "System.String", "Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an.");
             AddProperty(properties, "OpenRowsetVariable", $"User::{tableName}_DestName", "System.String", "Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält.");
@@ -243,8 +228,8 @@ namespace MsSsisPackageFactory.FactoryEngine
             component.AppendChild(properties);
 
             // <connections>
-            XmlElement connections = xmlDocument.CreateElement("connections");
-            XmlElement connection = xmlDocument.CreateElement("connection");
+            XmlElement connections = _xmlDocument.CreateElement("connections");
+            XmlElement connection = _xmlDocument.CreateElement("connection");
             connection.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Connections[OleDbConnection]");
             connection.SetAttribute("connectionManagerID", "Package.ConnectionManagers[OledbDestinationConnection]");
             connection.SetAttribute("connectionManagerRefId", "Package.ConnectionManagers[OledbDestinationConnection]");
@@ -254,46 +239,46 @@ namespace MsSsisPackageFactory.FactoryEngine
             component.AppendChild(connections);
 
             // <inputs>
-            XmlElement inputs = xmlDocument.CreateElement("inputs");
-            XmlElement input = xmlDocument.CreateElement("input");
+            XmlElement inputs = _xmlDocument.CreateElement("inputs");
+            XmlElement input = _xmlDocument.CreateElement("input");
             input.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels]");
             input.SetAttribute("errorOrTruncationOperation", "Einfügen");
             input.SetAttribute("errorRowDisposition", "FailComponent");
             input.SetAttribute("hasSideEffects", "true");
             input.SetAttribute("name", "Eingabe des OLE DB-Ziels");
 
-            XmlElement inputColumns = xmlDocument.CreateElement("inputColumns");
-            foreach (var col in columnNames)
+            XmlElement inputColumns = _xmlDocument.CreateElement("inputColumns");
+            foreach (TableColumn col in columns)
             {
-                AddInputColumn(inputColumns, col, componentName, GetDataTypeForColumn(col), GetLengthForColumn(col), $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[{col}]", $"Package\\Transform and transfer\\Quelle 0 - {tableName}.Outputs[Ausgabe der OLE DB-Quelle].Columns[{col}]"); // Anpassen, wenn Source-Name anders ist
+                AddInputColumn(inputColumns, col.ColumnName, componentName, GetDataTypeForColumn(col.ColumnName), GetLengthForColumn(col.ColumnName), $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[{col.ColumnName}]", $"Package\\Transform and transfer\\Quelle 0 - {tableName}.Outputs[Ausgabe der OLE DB-Quelle].Columns[{col.ColumnName}]"); // Anpassen, wenn Source-Name anders ist
             }
             input.AppendChild(inputColumns);
 
-            XmlElement externalMetadataColumnsInput = xmlDocument.CreateElement("externalMetadataColumns");
+            XmlElement externalMetadataColumnsInput = _xmlDocument.CreateElement("externalMetadataColumns");
             externalMetadataColumnsInput.SetAttribute("isUsed", "True");
-            foreach (var col in columnNames)
+            foreach (TableColumn col in columns)
             {
-                AddExternalMetadataColumn(externalMetadataColumnsInput, col, componentName, GetDataTypeForColumn(col), GetLengthForColumn(col));
+                AddExternalMetadataColumn(externalMetadataColumnsInput, col.ColumnName, componentName, GetDataTypeForColumn(col.ColumnName), GetLengthForColumn(col.ColumnName));
             }
             input.AppendChild(externalMetadataColumnsInput);
             inputs.AppendChild(input);
             component.AppendChild(inputs);
 
             // <outputs>
-            XmlElement outputs = xmlDocument.CreateElement("outputs");
-            XmlElement output = xmlDocument.CreateElement("output");
+            XmlElement outputs = _xmlDocument.CreateElement("outputs");
+            XmlElement output = _xmlDocument.CreateElement("output");
             output.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Outputs[Fehlerausgabe des OLE DB-Ziels]");
             output.SetAttribute("exclusionGroup", "1");
             output.SetAttribute("isErrorOut", "true");
             output.SetAttribute("name", "Fehlerausgabe des OLE DB-Ziels");
             output.SetAttribute("synchronousInputId", $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels]");
 
-            XmlElement outputColumns = xmlDocument.CreateElement("outputColumns");
+            XmlElement outputColumns = _xmlDocument.CreateElement("outputColumns");
             AddOutputColumn(outputColumns, "ErrorCode", "i4", 0, $"Package\\Transform and transfer\\{componentName}.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]", specialFlags: "1");
             AddOutputColumn(outputColumns, "ErrorColumn", "i4", 0, $"Package\\Transform and transfer\\{componentName}.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]", specialFlags: "2");
             output.AppendChild(outputColumns);
 
-            XmlElement externalMetadataColumnsOutput = xmlDocument.CreateElement("externalMetadataColumns");
+            XmlElement externalMetadataColumnsOutput = _xmlDocument.CreateElement("externalMetadataColumns");
             output.AppendChild(externalMetadataColumnsOutput);
             outputs.AppendChild(output);
             component.AppendChild(outputs);
@@ -304,7 +289,7 @@ namespace MsSsisPackageFactory.FactoryEngine
         #region WriteTransformAndTransferExec HelpersHelpers
         private void AddInputColumn(XmlElement inputColumns, string colName, string componentName, string dataType, int length, string externalMetadataColumnId, string lineageId)
         {
-            XmlElement col = xmlDocument.CreateElement("inputColumn");
+            XmlElement col = _xmlDocument.CreateElement("inputColumn");
             col.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels].Columns[{componentName}]"); // Dynamisch anpassen
             col.SetAttribute("cachedDataType", dataType);
             if (length > 0) col.SetAttribute("cachedLength", length.ToString());
@@ -316,7 +301,7 @@ namespace MsSsisPackageFactory.FactoryEngine
 
         private void AddExternalMetadataColumn(XmlElement externalColumns, string colName, string componentName, string dataType, int length)
         {
-            XmlElement col = xmlDocument.CreateElement("externalMetadataColumn");
+            XmlElement col = _xmlDocument.CreateElement("externalMetadataColumn");
             col.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[{colName}]"); // Dynamisch anpassen
             col.SetAttribute("dataType", dataType);
             if (length > 0) col.SetAttribute("length", length.ToString());
@@ -326,7 +311,7 @@ namespace MsSsisPackageFactory.FactoryEngine
 
         private void AddProperty(XmlElement properties, string name, string value, string dataType, string description, string uiTypeEditor = null, string typeConverter = null)
         {
-            XmlElement prop = xmlDocument.CreateElement("property");
+            XmlElement prop = _xmlDocument.CreateElement("property");
             prop.SetAttribute("dataType", dataType);
             prop.SetAttribute("description", description);
             prop.SetAttribute("name", name);
@@ -338,7 +323,7 @@ namespace MsSsisPackageFactory.FactoryEngine
 
         private void AddOutputColumn(XmlElement outputColumns, string colName, string dataType, int length, string lineageId, string specialFlags = null)
         {
-            XmlElement col = xmlDocument.CreateElement("outputColumn");
+            XmlElement col = _xmlDocument.CreateElement("outputColumn");
             col.SetAttribute("refId", lineageId); // Oder dynamisch anpassen
             col.SetAttribute("dataType", dataType);
             if (length > 0) col.SetAttribute("length", length.ToString());
@@ -367,18 +352,24 @@ namespace MsSsisPackageFactory.FactoryEngine
 
         void WriteTransferSqlServerObjectsExec()
         {
-            XmlNode taskData = xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer SQL-Server objects']/DTS:ObjectData/TransferSqlServerObjectsTaskData", xmlNamespaceManager);
+            XmlNode taskData = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer SQL-Server objects']/DTS:ObjectData/TransferSqlServerObjectsTaskData", _xmlNamespaceManager);
 
-            taskData.Attributes["TablesList"].Value = GetTablesList();
-            taskData.Attributes["ViewsList"].Value = GetViewsList();
+            taskData.Attributes["TablesList"].Value = CreateDtsTablesList(this._metadata.CurrentDbMetaData.Tables);
+            taskData.Attributes["ViewsList"].Value = CreateDtsViewsList();
         }
 
-        string GetTablesList()
+        string CreateDtsTablesList(List<DatabaseTable> tables)
         {
-            return "3,18,[dbo].[Categories],21,[dbo].[Order Details],16,[dbo].[Shippers],";
+            var stringBuilder = new StringBuilder();
+            foreach (DatabaseTable table in tables)
+            {
+                string entryName = $"[{table.SchemaName}].[{table.TableName}]";
+                stringBuilder.Append($"{entryName.Length},{entryName},");
+            }
+            return $"{tables.Count},{stringBuilder.ToString()}";
         }
 
-        string GetViewsList()
+        string CreateDtsViewsList()
         {
             return "16,37,[dbo].[Alphabetical list of products],31,[dbo].[Category Sales for 1997],28,[dbo].[Current Product List],38,[dbo].[Customer and Suppliers by City],16,[dbo].[Invoices],30,[dbo].[Order Details Extended],23,[dbo].[Order Subtotals],18,[dbo].[Orders Qry],30,[dbo].[Product Sales for 1997],36,[dbo].[Products Above Average Price],28,[dbo].[Products by Category],24,[dbo].[Quarterly Orders],25,[dbo].[Sales by Category],30,[dbo].[Sales Totals by Amount],35,[dbo].[Summary of Sales by Quarter],32,[dbo].[Summary of Sales by Year],";
         }

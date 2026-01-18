@@ -41,7 +41,8 @@ namespace MsSsisPackageFactory.MetadataManagement.Configuration
 
             var serializer = new XmlSerializer(typeof(UserConfiguration));
             using var reader = new StreamReader(_defaultFilePath);
-            return (UserConfiguration)serializer.Deserialize(reader);
+            object desXml = serializer.Deserialize(reader);
+            return (UserConfiguration)desXml;
         }
     }
 }

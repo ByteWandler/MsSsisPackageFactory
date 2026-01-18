@@ -27,6 +27,6 @@ namespace MsSsisPackageFactory.MetadataManagement
         /// Eine Implementierung könnte prüfen, ob alle in <paramref name="userConfig"/> aufgeführten Tabellen
         /// tatsächlich in <paramref name="dbMetaData"/> vorhanden sind.
         /// </example>
-        bool IsConsistent(DbMetaData dbMetaData, UserConfiguration userConfig);
+        ValidationResult Validate(DbMetaData dbMetaData, UserConfiguration userConfig);
     }
 }

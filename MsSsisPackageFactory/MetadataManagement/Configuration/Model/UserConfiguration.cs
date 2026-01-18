@@ -7,7 +7,7 @@ using System.Xml.Serialization;
 
 namespace MsSsisPackageFactory.MetadataManagement.Configuration.Model
 {
-    [XmlRoot("UserConfiguration")]
+    [XmlRoot("FactoryConfiguration")]
     public class UserConfiguration
     {
         [XmlElement("TemplateFileName")]

@@ -26,26 +26,26 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DEW11N0PC042823</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAHPHqYwUXtkyVT8QdOZmc3AAAAAACAAAAAAAQZgAAAAEAACAAAABVsS+IgxvAPhYAU7HDtce/35KUR6NC/9LBEOmr/ZZIcQAAAAAOgAAAAAIAACAAAAC2nLcloaas9GfOBrNKQtKnNstHCzVkLzimsZe03f2VOpAAAAAKJzW2KS/iVreyGjpg5yaUH9xbhxWyGuHYCAghESdBZWkeTaHclR3YizcE19iq0b2vmyb5+AKS/j5d2EmXAOjtpMO3khe/tsIZUKrims621SQS91S83afhhx3ct+pdft7j0obEwMjRu9lR6IUEnW9x28Aqc7dii8gs2Sc8MHgKhNaay5dBH3snH4azEKDuVJ9AAAAAXyHkWvvhY53Qu7+/v/XrNQdt4tzy3uhxFdt4sGYRvBTmRNg2IdLMNh0uJqRY5BtGakmOc97Kmmoyy6bDoIakjQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA5TgtmmlcMkueP6tuvEMzDAAAAAACAAAAAAAQZgAAAAEAACAAAACC8I8K7RYomPtc5XdNc9nzo8Yfg/YoWUkiuu+MP5ZIQwAAAAAOgAAAAAIAACAAAAC3Mmi32F1b5f+nR8HDnePRD/048+ku2XZFC11XwY54I5AAAABJEowgZKNGnsAu6/L8ju0MXFksIuMaijUB1gtdKEXQ3W3iVssdxA/j+UzL0iCj47x4gBCfjshdhVtp7B3OrRQYmXEGpXfyTfXa00X7xVzhHf1IbAuAeOEWFnjQyyiQCY+qZODZ0w9p5L+y4kjbvJAPGM+MR5YLmQ44y/2QTHLcAwJQhmMFPj5fCYH9cl7XPDVAAAAAjKcST2lnI5dAMJUZ0ZCl8cDi+8rqdyM66tycagJmBkHicKnLSJiw0rlpYY8m+my4jBhUiZu98T4isWWw9knfLQ==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
-          <SSIS:Package SSIS:Name="replicateDb.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="replicateDbTemplate.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers />
         <SSIS:DeploymentInfo>
           <SSIS:ProjectConnectionParameters />
           <SSIS:PackageInfo>
-            <SSIS:PackageMetaData SSIS:Name="replicateDb.dtsx">
+            <SSIS:PackageMetaData SSIS:Name="replicateDbTemplate.dtsx">
               <SSIS:Properties>
-                <SSIS:Property SSIS:Name="ID">{D8413CB1-2B50-4222-8E96-35176F01272E}</SSIS:Property>
-                <SSIS:Property SSIS:Name="Name">replicateDb</SSIS:Property>
+                <SSIS:Property SSIS:Name="ID">{A447630C-B4F5-409D-8740-A72E2DD9C406}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">replicateDbTemplate</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">649</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">665</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{5AC27193-8E59-4B29-B424-1ABE6B67A62D}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{4F0246DB-AFE5-42CE-A067-A49E12616C25}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

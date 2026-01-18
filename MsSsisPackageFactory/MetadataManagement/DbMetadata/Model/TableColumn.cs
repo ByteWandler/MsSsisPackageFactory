@@ -16,6 +16,10 @@
                 (IsNullable ? ", NULL" : ", NOT NULL") + ")";
             }
         }
-            
+
+        public override string ToString()
+        {
+            return this.ColumnName;
+        }
     }
 }

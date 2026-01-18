@@ -2,12 +2,12 @@
 <FactoryConfiguration>
 
 	<!-- Pfade zu Template und Ausgabe -->
-	<TemplateFileName>replicateDb.dtsx</TemplateFileName>
+	<TemplateFileName>../../../../MsSsisPackageFactoryTemplate/replicateDbTemplate.dtsx</TemplateFileName>
 	<OutputDirectory>.\GeneratedPackages</OutputDirectory>
 
 	<!-- Datenbankverbindung -->
 	<Database>
-		<ConnectionString>Server=.;Database=Northwind;Trusted_Connection=True;</ConnectionString>
+		<ConnectionString>Data Source=DEW11N0PC042823\MSSQLSVR22EXP;Integrated Security=True;Initial Catalog=NorthWind;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False</ConnectionString>
 		<Schema>dbo</Schema>
 	</Database>
 

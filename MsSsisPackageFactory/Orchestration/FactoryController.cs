@@ -2,8 +2,6 @@
 using MsSsisPackageFactory.MetadataManagement;
 using MsSsisPackageFactory.MetadataManagement.Configuration;
 using MsSsisPackageFactory.MetadataManagement.DbMetadata;
-using MsSsisPackageFactory.MetadataManagement.Model;
-using System.Runtime.ConstrainedExecution;
 
 namespace MsSsisPackageFactory.Orchestration
 {
@@ -42,11 +40,7 @@ namespace MsSsisPackageFactory.Orchestration
         /// </summary>
         public void Run()
         {
-            // In Konfigdatei auslgern.
-            string templateFileName = "replicateDb.dtsx";
-            string templateDirectory = @"..\..\..\..\MsSsisPackageFactoryTemplate";
-
-            if (!File.Exists(templateFileName))
+            if (!File.Exists(this._configProvider.CurrentConfiguration.TemplateFileName))
             {
                 throw new FileNotFoundException("Die angegebene Templatedatei existiert nicht. Überprüfen Sie die Pfadangabe.");
             }

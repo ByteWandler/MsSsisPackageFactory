@@ -1,11 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
 using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
-using MsSsisPackageFactory.MetadataManagement.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MsSsisPackageFactory.MetadataManagement.DbMetadata
 {

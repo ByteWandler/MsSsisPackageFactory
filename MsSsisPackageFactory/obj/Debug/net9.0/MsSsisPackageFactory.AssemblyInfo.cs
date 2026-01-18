@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MsSsisPackageFactory")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4ecf81559b9817b00297bc4204a3c58e88fd743a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5f6bda32d507631b33f0505da9198bc2a32f59ef")]
 [assembly: System.Reflection.AssemblyProductAttribute("MsSsisPackageFactory")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MsSsisPackageFactory")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
