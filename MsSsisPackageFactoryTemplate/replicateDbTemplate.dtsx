@@ -12,8 +12,8 @@
   DTS:LocaleID="1031"
   DTS:ObjectName="replicateDbTemplate"
   DTS:PackageType="5"
-  DTS:VersionBuild="665"
-  DTS:VersionGUID="{4F0246DB-AFE5-42CE-A067-A49E12616C25}">
+  DTS:VersionBuild="731"
+  DTS:VersionGUID="{B50C6499-AB63-473D-900E-01EDCFD43FAD}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -153,7 +153,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="CurrentDateTime">
       <DTS:VariableValue
-        DTS:DataType="8">2026-01-17 23:37:03.497</DTS:VariableValue>
+        DTS:DataType="8">2026-01-18 16:00:46.397</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -164,6 +164,35 @@
       <DTS:VariableValue
         DTS:DataType="8"
         xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0929DE38-903B-4651-90DC-A8B07CBA7682}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;[&quot; + @[User::DestinationDbName] + &quot;].dbo.Customers&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Customers_DestName">
+      <DTS:VariableValue
+        DTS:DataType="8">[].dbo.Customers</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{E615B969-DB5A-4BDC-AF9A-2E8CA019A682}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Customers_DestNameTemp">
+      <DTS:VariableValue
+        DTS:DataType="8">NorthWind2.dbo.Customers</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FBDB00D5-F0C2-49EC-894D-CD91750D7F2E}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Customers_SelectCmd">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT [CustomerID],[CompanyName], '**********' [ContactName],[ContactTitle],[Address],[City],[Region],[PostalCode],[Country],[Phone],[Fax] FROM [NorthWind].[dbo].[Customers]</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -186,6 +215,35 @@
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
+      DTS:DTSID="{67E7D54C-308D-465F-A333-3C1DB70926E3}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;[&quot; + @[User::DestinationDbName] + &quot;].dbo.Employees&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Employees_DestName">
+      <DTS:VariableValue
+        DTS:DataType="8">[].dbo.Employees</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{36C606FA-2BDA-4D37-A284-0423B1A9A73D}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Employees_DestNameTemp">
+      <DTS:VariableValue
+        DTS:DataType="8">NorthWind2.dbo.Employees</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AEA7261F-61C1-41C4-9D09-4986CF778EF2}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="Employees_SelectCmd">
+      <DTS:VariableValue
+        DTS:DataType="8">SELECT [EmployeeID],'**********' [LastName],'**********' [FirstName],[Title],[TitleOfCourtesy],[BirthDate],[HireDate],[Address],[City],[Region],[PostalCode],[Country],[HomePhone],[Extension],[Photo],[Notes],[ReportsTo],[PhotoPath] FROM [NorthWind].[dbo].[Employees]</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
       DTS:DTSID="{EE4120A1-53FE-4592-BB46-54B14258A943}"
       DTS:IncludeInDebugDump="2345"
       DTS:Namespace="User"
@@ -201,26 +259,6 @@
       DTS:ObjectName="LoggingServerName">
       <DTS:VariableValue
         DTS:DataType="8">DEW11N0PC042823\MSSQLSVR22EXP</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{67E7D54C-308D-465F-A333-3C1DB70926E3}"
-      DTS:EvaluateAsExpression="True"
-      DTS:Expression="&quot;[&quot; + @[User::DestinationDbName] + &quot;].dbo.Shippers&quot;"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="Shippers_DestName">
-      <DTS:VariableValue
-        DTS:DataType="8">[].dbo.Shippers</DTS:VariableValue>
-    </DTS:Variable>
-    <DTS:Variable
-      DTS:CreationName=""
-      DTS:DTSID="{AEA7261F-61C1-41C4-9D09-4986CF778EF2}"
-      DTS:IncludeInDebugDump="2345"
-      DTS:Namespace="User"
-      DTS:ObjectName="Shippers_SelectCmd">
-      <DTS:VariableValue
-        DTS:DataType="8">SELECT [ShipperID], [CompanyName], [Phone] FROM [NorthWind].[dbo].[Shippers]</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -498,6 +536,15 @@
           ReadOnlyVariables="User::CustomDestinationDbName,User::SourceDbName"
           ReadWriteVariables="User::DestinationDbName">
           <ProjectItem
+            Name="Properties\Settings.settings"
+            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+          <ProjectItem
             Name="Properties\Resources.resx"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <root>
@@ -616,35 +663,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
 </root>]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.Designer.cs"
-            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
-// <auto-generated>
-//     This code was generated by a tool.
-//
-//     Changes to this file may cause incorrect behavior and will be lost if
-//     the code is regenerated.
-// </auto-generated>
-//------------------------------------------------------------------------------
-
-[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_61bff0a468004fc0adf9165afdfd16e2.Properties.Settings.get_Default():ST_61bff0a468004fc0adf9165afdfd16e2.Properties.Sett" +
-    "ings")]
-
-namespace ST_61bff0a468004fc0adf9165afdfd16e2.Properties {
-    
-    
-    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-        
-        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-        private static Settings defaultInstance = new Settings();
-        
-        public static Settings Default {
-            get {
-                return defaultInstance;
-            }
-        }
-    }
-}]]></ProjectItem>
           <ProjectItem
             Name="ST_61bff0a468004fc0adf9165afdfd16e2.csproj"
             Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
@@ -875,7 +893,7 @@ namespace ST_61bff0a468004fc0adf9165afdfd16e2
     <msb:CodeName>ST_61bff0a468004fc0adf9165afdfd16e2</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_61bff0a468004fc0adf9165afdfd16e2</msb:DisplayName>
-    <msb:ProjectId>{61CA286A-4247-4B65-B517-815F08CBC445}</msb:ProjectId>
+    <msb:ProjectId>{77232FD1-F691-4F23-874E-FA2582E3CD86}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_61bff0a468004fc0adf9165afdfd16e2.csproj" />
@@ -887,6 +905,35 @@ namespace ST_61bff0a468004fc0adf9165afdfd16e2
     <msb:File Include="ScriptMain.cs" />
   </msb:ItemGroup>
 </c:Project>]]></ProjectItem>
+          <ProjectItem
+            Name="Properties\Settings.Designer.cs"
+            Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
+// <auto-generated>
+//     This code was generated by a tool.
+//
+//     Changes to this file may cause incorrect behavior and will be lost if
+//     the code is regenerated.
+// </auto-generated>
+//------------------------------------------------------------------------------
+
+[assembly: global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode", Scope="member", Target="ST_61bff0a468004fc0adf9165afdfd16e2.Properties.Settings.get_Default():ST_61bff0a468004fc0adf9165afdfd16e2.Properties.Sett" +
+    "ings")]
+
+namespace ST_61bff0a468004fc0adf9165afdfd16e2.Properties {
+    
+    
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+        private static Settings defaultInstance = new Settings();
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+    }
+}]]></ProjectItem>
           <ProjectItem
             Name="Properties\AssemblyInfo.cs"
             Encoding="UTF8"><![CDATA[using System.Reflection;
@@ -917,15 +964,6 @@ using System.Runtime.CompilerServices;
 // by using the '*' as shown below:
 
 [assembly: AssemblyVersion("1.0.*")]]]></ProjectItem>
-          <ProjectItem
-            Name="Properties\Settings.settings"
-            Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
-<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
-</SettingsFile>]]></ProjectItem>
           <ProjectItem
             Name="Properties\Resources.Designer.cs"
             Encoding="UTF8"><![CDATA[//------------------------------------------------------------------------------
@@ -997,7 +1035,7 @@ namespace ST_61bff0a468004fc0adf9165afdfd16e2.Properties {
           <BinaryItem
             Name="ST_61bff0a468004fc0adf9165afdfd16e2.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
-ZGUuDQ0KJAAAAAAAAABQRQAATAEDAF4BZWkAAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAPi8A
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAD/fbGkAAAAAAAAAAOAAIiALATAAABAAAAAIAAAAAAAAPi8A
 AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
 ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAOwuAABPAAAAAEAAAJgEAAAAAAAAAAAAAAAAAAAA
 AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1027,7 +1065,7 @@ FQDBAEsEBgBxADwFIwDJAB0FKADRAMMDLQDZAO4CMwDhAF4ANwB5AHsFPAB5ACIDQQDhAFIFRgDZ
 APgCTQDJAGwFAQBxAEsEBgCRAEsEBgDpAJwAUgDpAIMFWQCZAEsEXgC5AEsEBgAIABQAdwAIABgA
 fAApAHMA5AAuAAsAvAAuABMAxQAuABsA5AAuACMA7QAuACsAFgEuADMAFgEuADsAHAEuAEMA7QAu
 AEsAKgEuAFMAFgEuAFsASQFDAGMAfABJAHMA5ABhAHsAfABjAGsAfAAbAAMAAQAEAAMAAAA7BK0A
-AAAEAbIAAABkBbcAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAAAkJfdqAAAAAAAAAQAA
+AAAEAbIAAABkBbcAAgAEAAMAAgAFAAUAAQAGAAUAAgAHAAcABIAAAAEAAAAqJWdlAAAAAAAAAQAA
 AAQAAAAAAAAAAAAAAGUAVQAAAAAAEQAAAAAAAAAAAAAAbgArAwAAAAAEAAAAAAAAAAAAAABlAMwD
 AAAAABEAAAAAAAAAAAAAAG4ALgAAAAAAAAAAAAEAAACcBAAABQACAAAAAFNUXzYxYmZmMGE0Njgw
 MDRmYzBhZGY5MTY1YWZkZmQxNmUyADxNb2R1bGU+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdl
@@ -1060,7 +1098,7 @@ AE0ALQBkAGQAIABIAEgAOgBtAG0AOgBzAHMAOgBmAGYAZgBmAGYAZgBmAAElVQBzAGUAcgA6ADoA
 UwBvAHUAcgBjAGUARABiAE4AYQBtAGUAAAMgAAAvVQBzAGUAcgA6ADoARABlAHMAdABpAG4AYQB0
 AGkAbwBuAEQAYgBOAGEAbQBlAABxUwBUAF8ANgAxAGIAZgBmADAAYQA0ADYAOAAwADAANABmAGMA
 MABhAGQAZgA5ADEANgA1AGEAZgBkAGYAZAAxADYAZQAyAC4AUAByAG8AcABlAHIAdABpAGUAcwAu
-AFIAZQBzAG8AdQByAGMAZQBzAAAAAADneJbTmZo3R5+4Pth6lj7pAAQgAQEIAyAAAQUgAQEREQQg
+AFIAZQBzAG8AdQByAGMAZQBzAAAAAADmGHA9s59PQJsRaqdgX5G1AAQgAQEIAyAAAQUgAQEREQQg
 AQEOBSABARFVBwcEDg4OET0EIAASZQQgABJpBSABEm0cAyAAHAQAAQIOBAAAET0EIAEODgYAAw4O
 Dg4EIAEBHAYAARJ1EXkEIAASfQYgAgEOEn0It3pcVhk04IkIiYRdzYCAzJEEAAAAAAQBAAAAAwYS
 TQMGElEDBhIQAgYIAwYRFAQAABJNBAAAElEFAAEBElEEAAASEAMAAAEECAASTQQIABJRBAgAEhAI
@@ -1078,14 +1116,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAABABAAAAAYAACAAAAAAAAAAAAAAAAAAAABAAEAAAAwAACAAAAAAAAAAAAAAAAAAAABAAAA
 AABIAAAAWEAAADoEAAAAAAAAAAAAADoENAAAAFYAUwBfAFYARQBSAFMASQBPAE4AXwBJAE4ARgBP
-AAAAAAC9BO/+AAABAAAAAQD3aiQlAAABAPdqJCU/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
+AAAAAAC9BO/+AAABAAAAAQBnZSolAAABAGdlKiU/AAAAAAAAAAQAAAACAAAAAAAAAAAAAAAAAAAA
 RAAAAAEAVgBhAHIARgBpAGwAZQBJAG4AZgBvAAAAAAAkAAQAAABUAHIAYQBuAHMAbABhAHQAaQBv
 AG4AAAAAAAAAsASaAwAAAQBTAHQAcgBpAG4AZwBGAGkAbABlAEkAbgBmAG8AAAB2AwAAAQAwADAA
 MAAwADAANABiADAAAAAaAAEAAQBDAG8AbQBtAGUAbgB0AHMAAAAAAAAAMgAJAAEAQwBvAG0AcABh
 AG4AeQBOAGEAbQBlAAAAAABEAGUAawBhAEIAYQBuAGsAAAAAAHAAJAABAEYAaQBsAGUARABlAHMA
 YwByAGkAcAB0AGkAbwBuAAAAAABTAFQAXwA2ADEAYgBmAGYAMABhADQANgA4ADAAMAA0AGYAYwAw
 AGEAZABmADkAMQA2ADUAYQBmAGQAZgBkADEANgBlADIAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMA
-aQBvAG4AAAAAADEALgAwAC4AOQA1ADAAOAAuADIANwAzADgAMwAAAAAAcAAoAAEASQBuAHQAZQBy
+aQBvAG4AAAAAADEALgAwAC4AOQA1ADEANAAuADIANQA5ADUAOQAAAAAAcAAoAAEASQBuAHQAZQBy
 AG4AYQBsAE4AYQBtAGUAAABTAFQAXwA2ADEAYgBmAGYAMABhADQANgA4ADAAMAA0AGYAYwAwAGEA
 ZABmADkAMQA2ADUAYQBmAGQAZgBkADEANgBlADIALgBkAGwAbAAAAFgAGgABAEwAZQBnAGEAbABD
 AG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgAEQAZQBrAGEAQgBhAG4A
@@ -1094,9 +1132,9 @@ AHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4AYQBtAGUAAABTAFQAXwA2ADEAYgBmAGYA
 MABhADQANgA4ADAAMAA0AGYAYwAwAGEAZABmADkAMQA2ADUAYQBmAGQAZgBkADEANgBlADIALgBk
 AGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0AZQAAAAAAUwBUAF8ANgAxAGIAZgBmADAA
 YQA0ADYAOAAwADAANABmAGMAMABhAGQAZgA5ADEANgA1AGEAZgBkAGYAZAAxADYAZQAyAAAAQgAP
-AAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADUAMAA4AC4AMgA3ADMA
-OAAzAAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5
-ADUAMAA4AC4AMgA3ADMAOAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5ADUAMQA0AC4AMgA1ADkA
+NQA5AAAAAABGAA8AAQBBAHMAcwBlAG0AYgBsAHkAIABWAGUAcgBzAGkAbwBuAAAAMQAuADAALgA5
+ADUAMQA0AC4AMgA1ADkANQA5AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -1166,6 +1204,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:refId="Package\Reactivate constraints"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Reactivates all constraints again on all tables"
+      DTS:Disabled="True"
       DTS:DTSID="{3437A143-565E-4E89-B66C-EE474F3C44FD}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
@@ -1186,6 +1225,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
       DTS:CreationName="Microsoft.TransferSqlServerObjectsTask"
       DTS:DelayValidation="True"
       DTS:Description="Transfers all other tables"
+      DTS:Disabled="True"
       DTS:DTSID="{3A6937C7-1EA6-4A56-A93F-20C1CE8BA364}"
       DTS:ExecutableType="Microsoft.TransferSqlServerObjectsTask"
       DTS:LocaleID="-1"
@@ -1204,14 +1244,10 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           SourceConnection="{6245466F-AEBE-431F-BCD5-3C0AE74EF888}"
           DestinationConnection="{61599726-DFEF-458D-A057-2119E1CF1A80}"
           SourceDatabase="NorthWind"
-          TablesList="12,18,[dbo].[Categories],28,[dbo].[CustomerCustomerDemo],28,[dbo].[CustomerDemographics],17,[dbo].[Customers],17,[dbo].[Employees],27,[dbo].[EmployeeTerritories],21,[dbo].[Order Details],14,[dbo].[Orders],16,[dbo].[Products],14,[dbo].[Region],17,[dbo].[Suppliers],19,[dbo].[Territories],"
-          ViewsList="16,37,[dbo].[Alphabetical list of products],31,[dbo].[Category Sales for 1997],28,[dbo].[Current Product List],38,[dbo].[Customer and Suppliers by City],16,[dbo].[Invoices],30,[dbo].[Order Details Extended],23,[dbo].[Order Subtotals],18,[dbo].[Orders Qry],30,[dbo].[Product Sales for 1997],36,[dbo].[Products Above Average Price],28,[dbo].[Products by Category],24,[dbo].[Quarterly Orders],25,[dbo].[Sales by Category],30,[dbo].[Sales Totals by Amount],35,[dbo].[Summary of Sales by Quarter],32,[dbo].[Summary of Sales by Year],"
+          TablesList="11,18,[dbo].[Categories],28,[dbo].[CustomerCustomerDemo],28,[dbo].[CustomerDemographics],27,[dbo].[EmployeeTerritories],21,[dbo].[Order Details],14,[dbo].[Orders],16,[dbo].[Products],14,[dbo].[Region],16,[dbo].[Shippers],17,[dbo].[Suppliers],19,[dbo].[Territories],"
           CopyData="True"
           ExistingData="Append"
-          CopySchema="False"
-          CopyIndexes="True"
-          CopyPrimaryKeys="True"
-          CopyForeignKeys="True" />
+          CopySchema="False" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1239,10 +1275,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           SourceDatabase="NorthWind"
           CopyAllSchemas="True"
           TablesList="13,18,[dbo].[Categories],28,[dbo].[CustomerCustomerDemo],28,[dbo].[CustomerDemographics],17,[dbo].[Customers],17,[dbo].[Employees],27,[dbo].[EmployeeTerritories],21,[dbo].[Order Details],14,[dbo].[Orders],16,[dbo].[Products],14,[dbo].[Region],16,[dbo].[Shippers],17,[dbo].[Suppliers],19,[dbo].[Territories],"
-          UseCollation="True"
-          CopyIndexes="True"
-          CopyPrimaryKeys="True"
-          CopyForeignKeys="True" />
+          UseCollation="True" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -1263,12 +1296,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           version="1">
           <components>
             <component
-              refId="Package\Transform and transfer\Quelle 0 - Shippers"
+              refId="Package\Transform and transfer\Quelle 0 - Customers"
               componentClassID="Microsoft.OLEDBSource"
               contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
               description="OLE DB-Quelle"
-              name="Quelle 0 - Shippers"
+              name="Quelle 0 - Customers"
               usesDispositions="true"
+              validateExternalMetadata="False"
               version="7">
               <properties>
                 <property
@@ -1291,7 +1325,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 <property
                   dataType="System.String"
                   description="Die Variable, die den auszuführenden SQL-Befehl enthält."
-                  name="SqlCommandVariable">User::Shippers_SelectCmd</property>
+                  name="SqlCommandVariable">User::Customers_SelectCmd</property>
                 <property
                   dataType="System.Int32"
                   description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
@@ -1312,7 +1346,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform and transfer\Quelle 0 - Shippers.Connections[OleDbConnection]"
+                  refId="Package\Transform and transfer\Quelle 0 - Customers.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[OledbSourceConnection]"
                   connectionManagerRefId="Package.ConnectionManagers[OledbSourceConnection]"
                   description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
@@ -1320,90 +1354,698 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               </connections>
               <outputs>
                 <output
-                  refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle]"
+                  refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle]"
                   name="Ausgabe der OLE DB-Quelle">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ShipperID]"
-                      dataType="i4"
-                      errorOrTruncationOperation="Konvertierung"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ShipperID]"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ShipperID]"
-                      name="ShipperID"
-                      truncationRowDisposition="FailComponent" />
-                    <outputColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CompanyName]"
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Address]"
                       dataType="wstr"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[CompanyName]"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Address]"
+                      length="60"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CustomerID]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[CustomerID]"
+                      length="5"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CustomerID]"
+                      name="CustomerID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CompanyName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[CompanyName]"
                       length="40"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CompanyName]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CompanyName]"
                       name="CompanyName"
                       truncationRowDisposition="FailComponent" />
                     <outputColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Phone]"
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ContactName]"
                       dataType="wstr"
                       errorOrTruncationOperation="Konvertierung"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Phone]"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ContactName]"
+                      length="30"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ContactName]"
+                      name="ContactName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ContactTitle]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ContactTitle]"
+                      length="30"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ContactTitle]"
+                      name="ContactTitle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Phone]"
                       length="24"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Phone]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Phone]"
                       name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Fax]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Fax]"
+                      length="24"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Fax]"
+                      name="Fax"
                       truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ShipperID]"
-                      dataType="i4"
-                      name="ShipperID" />
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
                     <externalMetadataColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[CompanyName]"
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[CompanyName]"
                       dataType="wstr"
                       length="40"
                       name="CompanyName" />
                     <externalMetadataColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Phone]"
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Phone]"
                       dataType="wstr"
                       length="24"
                       name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
                   </externalMetadataColumns>
                 </output>
                 <output
-                  refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle]"
+                  refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle]"
                   isErrorOut="true"
                   name="Fehlerausgabe der OLE DB-Quelle">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ShipperID]"
-                      dataType="i4"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ShipperID]"
-                      name="ShipperID" />
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[CustomerID]"
+                      name="CustomerID" />
                     <outputColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[CompanyName]"
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[CompanyName]"
                       dataType="wstr"
                       length="40"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[CompanyName]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[CompanyName]"
                       name="CompanyName" />
                     <outputColumn
-                      refId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Phone]"
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ContactName]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ContactName]"
+                      name="ContactName" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ContactTitle]"
+                      name="ContactTitle" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Phone]"
                       dataType="wstr"
                       length="24"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Phone]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Phone]"
                       name="Phone" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Fax]"
+                      name="Fax" />
                   </outputColumns>
                   <externalMetadataColumns />
                 </output>
               </outputs>
             </component>
             <component
-              refId="Package\Transform and transfer\Ziel 0 - Shippers"
+              refId="Package\Transform and transfer\Quelle 0 - Employees"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB-Quelle;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;7"
+              description="OLE DB-Quelle"
+              name="Quelle 0 - Employees"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset">[dbo].[Shippers]</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT [DateiId], [Dateiname], [Dateiendung], 0x0 AS [SystemFile], [ErstelltAm], [ErstelltVon], [LetzteAenderungAm], [LetzteAenderungVon], [DateiGuid], [VersionNumber] FROM [].ami.Dat</property>
+                <property
+                  dataType="System.String"
+                  description="Die Variable, die den auszuführenden SQL-Befehl enthält."
+                  name="SqlCommandVariable">User::Employees_SelectCmd</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.String"
+                  description="Die Zuordnungen zwischen den Parametern im SQL-Befehl und den Variablen."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and transfer\Quelle 0 - Employees.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OledbSourceConnection]"
+                  connectionManagerRefId="Package.ConnectionManagers[OledbSourceConnection]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle]"
+                  name="Ausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[EmployeeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[EmployeeID]"
+                      name="EmployeeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[LastName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[LastName]"
+                      length="20"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[LastName]"
+                      name="LastName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[FirstName]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[FirstName]"
+                      length="10"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[FirstName]"
+                      name="FirstName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Title]"
+                      length="30"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Title]"
+                      name="Title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TitleOfCourtesy]"
+                      length="25"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[TitleOfCourtesy]"
+                      name="TitleOfCourtesy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BirthDate]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[BirthDate]"
+                      name="BirthDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[HireDate]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[HireDate]"
+                      name="HireDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Address]"
+                      length="60"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[City]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[City]"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[City]"
+                      name="City"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Region]"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Region]"
+                      name="Region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PostalCode]"
+                      length="10"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      name="PostalCode"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Country]"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Country]"
+                      name="Country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[HomePhone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[HomePhone]"
+                      length="24"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[HomePhone]"
+                      name="HomePhone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Extension]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Extension]"
+                      length="4"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Extension]"
+                      name="Extension"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Photo]"
+                      dataType="image"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Photo]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Photo]"
+                      name="Photo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Notes]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Notes]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Notes]"
+                      name="Notes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[ReportsTo]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ReportsTo]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[ReportsTo]"
+                      name="ReportsTo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[PhotoPath]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Konvertierung"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PhotoPath]"
+                      length="255"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[PhotoPath]"
+                      name="PhotoPath"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[HomePhone]"
+                      dataType="wstr"
+                      length="24"
+                      name="HomePhone" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Extension]"
+                      dataType="wstr"
+                      length="4"
+                      name="Extension" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Photo]"
+                      dataType="image"
+                      name="Photo" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[Notes]"
+                      dataType="nText"
+                      name="Notes" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].ExternalColumns[PhotoPath]"
+                      dataType="wstr"
+                      length="255"
+                      name="PhotoPath" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle]"
+                  isErrorOut="true"
+                  name="Fehlerausgabe der OLE DB-Quelle">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[EmployeeID]"
+                      dataType="i4"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[EmployeeID]"
+                      name="EmployeeID" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[LastName]"
+                      name="LastName" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[FirstName]"
+                      name="FirstName" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Title]"
+                      name="Title" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[TitleOfCourtesy]"
+                      name="TitleOfCourtesy" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[BirthDate]"
+                      name="BirthDate" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[HireDate]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[HireDate]"
+                      name="HireDate" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[City]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[City]"
+                      name="City" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Region]"
+                      name="Region" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PostalCode]"
+                      name="PostalCode" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Country]"
+                      name="Country" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[HomePhone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[HomePhone]"
+                      name="HomePhone" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Extension]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Extension]"
+                      name="Extension" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Photo]"
+                      dataType="image"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Photo]"
+                      name="Photo" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Notes]"
+                      dataType="nText"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[Notes]"
+                      name="Notes" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ReportsTo]"
+                      dataType="i4"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[ReportsTo]"
+                      name="ReportsTo" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PhotoPath]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Fehlerausgabe der OLE DB-Quelle].Columns[PhotoPath]"
+                      name="PhotoPath" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and transfer\Ziel 0 - Customers"
               componentClassID="Microsoft.OLEDBDestination"
               contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
               description="OLE DB-Ziel"
-              name="Ziel 0 - Shippers"
+              name="Ziel 0 - Customers"
               usesDispositions="true"
               validateExternalMetadata="False"
               version="4">
@@ -1419,7 +2061,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 <property
                   dataType="System.String"
                   description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
-                  name="OpenRowsetVariable">User::Shippers_DestName</property>
+                  name="OpenRowsetVariable">User::Customers_DestName</property>
                 <property
                   dataType="System.String"
                   description="Der auszuführende SQL-Befehl."
@@ -1445,11 +2087,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
                 <property
                   dataType="System.Boolean"
                   description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
-                  name="FastLoadKeepNulls">true</property>
+                  name="FastLoadKeepNulls">false</property>
                 <property
                   dataType="System.String"
                   description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
-                  name="FastLoadOptions"></property>
+                  name="FastLoadOptions">TABLOCK</property>
                 <property
                   dataType="System.Int32"
                   description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
@@ -1457,7 +2099,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               </properties>
               <connections>
                 <connection
-                  refId="Package\Transform and transfer\Ziel 0 - Shippers.Connections[OleDbConnection]"
+                  refId="Package\Transform and transfer\Ziel 0 - Customers.Connections[OleDbConnection]"
                   connectionManagerID="Package.ConnectionManagers[OledbDestinationConnection]"
                   connectionManagerRefId="Package.ConnectionManagers[OledbDestinationConnection]"
                   description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
@@ -1465,70 +2107,476 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
               </connections>
               <inputs>
                 <input
-                  refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels]"
+                  refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels]"
                   errorOrTruncationOperation="Einfügen"
                   errorRowDisposition="FailComponent"
                   hasSideEffects="true"
                   name="Eingabe des OLE DB-Ziels">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].Columns[ShipperID]"
-                      cachedDataType="i4"
-                      cachedName="ShipperID"
-                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ShipperID]"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ShipperID]" />
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[City]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[City]" />
                     <inputColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].Columns[CompanyName]"
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Region]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PostalCode]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Country]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Address]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[CustomerID]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="CustomerID"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[CustomerID]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CustomerID]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[CompanyName]"
                       cachedDataType="wstr"
                       cachedLength="40"
                       cachedName="CompanyName"
-                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[CompanyName]"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CompanyName]" />
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[CompanyName]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[CompanyName]" />
                     <inputColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].Columns[Phone]"
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[ContactName]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactName"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ContactName]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ContactName]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[ContactTitle]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="ContactTitle"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ContactTitle]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[ContactTitle]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[Phone]"
                       cachedDataType="wstr"
                       cachedLength="24"
                       cachedName="Phone"
-                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Phone]"
-                      lineageId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Phone]" />
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Phone]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].Columns[Fax]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="Fax"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Fax]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle].Columns[Fax]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ShipperID]"
-                      dataType="i4"
-                      name="ShipperID" />
-                    <externalMetadataColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[CompanyName]"
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Address]"
                       dataType="wstr"
-                      length="256"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[CustomerID]"
+                      dataType="wstr"
+                      length="5"
+                      name="CustomerID" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[CompanyName]"
+                      dataType="wstr"
+                      length="40"
                       name="CompanyName" />
                     <externalMetadataColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Phone]"
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ContactName]"
                       dataType="wstr"
-                      length="50"
+                      length="30"
+                      name="ContactName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ContactTitle]"
+                      dataType="wstr"
+                      length="30"
+                      name="ContactTitle" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Phone]"
+                      dataType="wstr"
+                      length="24"
                       name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Fax]"
+                      dataType="wstr"
+                      length="24"
+                      name="Fax" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
               <outputs>
                 <output
-                  refId="Package\Transform and transfer\Ziel 0 - Shippers.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  refId="Package\Transform and transfer\Ziel 0 - Customers.Outputs[Fehlerausgabe des OLE DB-Ziels]"
                   exclusionGroup="1"
                   isErrorOut="true"
                   name="Fehlerausgabe des OLE DB-Ziels"
-                  synchronousInputId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels]">
+                  synchronousInputId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
                       dataType="i4"
-                      lineageId="Package\Transform and transfer\Ziel 0 - Shippers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      lineageId="Package\Transform and transfer\Ziel 0 - Customers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
                       name="ErrorCode"
                       specialFlags="1" />
                     <outputColumn
-                      refId="Package\Transform and transfer\Ziel 0 - Shippers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      refId="Package\Transform and transfer\Ziel 0 - Customers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
                       dataType="i4"
-                      lineageId="Package\Transform and transfer\Ziel 0 - Shippers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      lineageId="Package\Transform and transfer\Ziel 0 - Customers.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Transform and transfer\Ziel 0 - Employees"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB-Ziel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Alle Rechte vorbehalten; http://www.microsoft.com/sql/support;4"
+              description="OLE DB-Ziel"
+              name="Ziel 0 - Employees"
+              usesDispositions="true"
+              validateExternalMetadata="False"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Die Anzahl der Sekunden für das Timeout eines Befehls. Der Wert &quot;0&quot; zeigt einen unendlichen Timeoutwert an."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts an."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die Variable an, die den Namen des zum Öffnen eines Rowsets verwendeten Datenbankobjekts enthält."
+                  name="OpenRowsetVariable">User::Employees_DestName</property>
+                <property
+                  dataType="System.String"
+                  description="Der auszuführende SQL-Befehl."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt die zu verwendende Spaltencodepage an, wenn keine Codepageinformationen von der Datenquelle verfügbar sind."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Erzwingt die Verwendung des DefaultCodePage-Eigenschaftswerts beim Beschreiben von Zeichendaten."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt den zum Zugreifen auf die Datenbank verwendeten Modus an."
+                  name="AccessMode"
+                  typeConverter="AccessMode">4</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob die für Identitätsspalten übergebenen Werte zum Ziel kopiert werden. Bei &quot;False&quot; werden die Werte für Identitätsspalten am Ziel automatisch generiert. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepIdentity">true</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Zeigt an, ob für Spalten, die NULL enthalten, NULL am Ziel eingefügt wird. Bei &quot;False&quot; werden für Spalten, die NULL enthalten, am Ziel die Standardwerte eingefügt. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Gibt die für die Option &quot;Schnelles Laden&quot; zu verwendenden Optionen an. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadOptions">TABLOCK</property>
+                <property
+                  dataType="System.Int32"
+                  description="Gibt an, wann beim Einfügen von Daten Commits ausgegeben werden. Der Wert &quot;0&quot; gibt an, dass ein Commit am Ende des Einfügens von Daten ausgegeben wird. Trifft nur zu, wenn die Option &quot;Schnelles Laden&quot; aktiviert ist."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Transform and transfer\Ziel 0 - Employees.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[OledbDestinationConnection]"
+                  connectionManagerRefId="Package.ConnectionManagers[OledbDestinationConnection]"
+                  description="Die für den Zugriff auf die Datenbank verwendete OLE DB-Laufzeitverbindung."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels]"
+                  errorOrTruncationOperation="Einfügen"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Eingabe des OLE DB-Ziels">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[EmployeeID]"
+                      cachedDataType="i4"
+                      cachedName="EmployeeID"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EmployeeID]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[EmployeeID]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[FirstName]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="FirstName"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[FirstName]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[FirstName]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="Title"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Title]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Title]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[TitleOfCourtesy]"
+                      cachedDataType="wstr"
+                      cachedLength="25"
+                      cachedName="TitleOfCourtesy"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[TitleOfCourtesy]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[TitleOfCourtesy]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[BirthDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="BirthDate"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BirthDate]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[BirthDate]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[HireDate]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="HireDate"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[HireDate]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[HireDate]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Address]"
+                      cachedDataType="wstr"
+                      cachedLength="60"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Address]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[City]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="City"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[City]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[City]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Region"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Region]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Region]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[PostalCode]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="PostalCode"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PostalCode]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[PostalCode]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="Country"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Country]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Country]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[HomePhone]"
+                      cachedDataType="wstr"
+                      cachedLength="24"
+                      cachedName="HomePhone"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[HomePhone]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[HomePhone]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Extension]"
+                      cachedDataType="wstr"
+                      cachedLength="4"
+                      cachedName="Extension"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Extension]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Extension]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Photo]"
+                      cachedDataType="image"
+                      cachedName="Photo"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Photo]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Photo]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[Notes]"
+                      cachedDataType="nText"
+                      cachedName="Notes"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Notes]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[Notes]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[ReportsTo]"
+                      cachedDataType="i4"
+                      cachedName="ReportsTo"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ReportsTo]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[ReportsTo]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[PhotoPath]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="PhotoPath"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PhotoPath]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[PhotoPath]" />
+                    <inputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].Columns[LastName]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="LastName"
+                      externalMetadataColumnId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LastName]"
+                      lineageId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle].Columns[LastName]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[EmployeeID]"
+                      dataType="i4"
+                      name="EmployeeID" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[LastName]"
+                      dataType="wstr"
+                      length="20"
+                      name="LastName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[FirstName]"
+                      dataType="wstr"
+                      length="10"
+                      name="FirstName" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Title]"
+                      dataType="wstr"
+                      length="30"
+                      name="Title" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[TitleOfCourtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="TitleOfCourtesy" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[BirthDate]"
+                      dataType="dbTimeStamp"
+                      name="BirthDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[HireDate]"
+                      dataType="dbTimeStamp"
+                      name="HireDate" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Address]"
+                      dataType="wstr"
+                      length="60"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[City]"
+                      dataType="wstr"
+                      length="15"
+                      name="City" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Region]"
+                      dataType="wstr"
+                      length="15"
+                      name="Region" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PostalCode]"
+                      dataType="wstr"
+                      length="10"
+                      name="PostalCode" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Country]"
+                      dataType="wstr"
+                      length="15"
+                      name="Country" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[HomePhone]"
+                      dataType="wstr"
+                      length="24"
+                      name="HomePhone" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Extension]"
+                      dataType="wstr"
+                      length="4"
+                      name="Extension" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Photo]"
+                      dataType="image"
+                      name="Photo" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[Notes]"
+                      dataType="nText"
+                      name="Notes" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[ReportsTo]"
+                      dataType="i4"
+                      name="ReportsTo" />
+                    <externalMetadataColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[PhotoPath]"
+                      dataType="wstr"
+                      length="255"
+                      name="PhotoPath" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Transform and transfer\Ziel 0 - Employees.Outputs[Fehlerausgabe des OLE DB-Ziels]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Fehlerausgabe des OLE DB-Ziels"
+                  synchronousInputId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Transform and transfer\Ziel 0 - Employees.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Transform and transfer\Ziel 0 - Employees.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Transform and transfer\Ziel 0 - Employees.Outputs[Fehlerausgabe des OLE DB-Ziels].Columns[ErrorColumn]"
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
@@ -1540,9 +2588,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
           <paths>
             <path
               refId="Package\Transform and transfer.Paths[Ausgabe der OLE DB-Quelle]"
-              endId="Package\Transform and transfer\Ziel 0 - Shippers.Inputs[Eingabe des OLE DB-Ziels]"
+              endId="Package\Transform and transfer\Ziel 0 - Employees.Inputs[Eingabe des OLE DB-Ziels]"
               name="Ausgabe der OLE DB-Quelle"
-              startId="Package\Transform and transfer\Quelle 0 - Shippers.Outputs[Ausgabe der OLE DB-Quelle]" />
+              startId="Package\Transform and transfer\Quelle 0 - Employees.Outputs[Ausgabe der OLE DB-Quelle]" />
+            <path
+              refId="Package\Transform and transfer.Paths[Ausgabe der OLE DB-Quelle1]"
+              endId="Package\Transform and transfer\Ziel 0 - Customers.Inputs[Eingabe des OLE DB-Ziels]"
+              name="Ausgabe der OLE DB-Quelle"
+              startId="Package\Transform and transfer\Quelle 0 - Customers.Outputs[Ausgabe der OLE DB-Quelle]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -1777,42 +2830,100 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     design-time-name="Package\Transform and transfer">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
-        <NodeLayout
-          Size="159,42"
-          Id="Package\Transform and transfer\Ziel 0 - Shippers"
-          TopLeft="21.5,151.5" />
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="173,42"
-          Id="Package\Transform and transfer\Quelle 0 - Shippers"
+          Id="Package\Transform and transfer\Quelle 0 - Employees"
           TopLeft="15.5,8.5" />
+        <NodeLayout
+          Size="169,42"
+          Id="Package\Transform and transfer\Ziel 0 - Customers"
+          TopLeft="276.5,143.5" />
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Transform and transfer\Quelle 0 - Customers"
+          TopLeft="243,13" />
+        <NodeLayout
+          Size="170,42"
+          Id="Package\Transform and transfer\Ziel 0 - Employees"
+          TopLeft="47,144" />
         <EdgeLayout
-          Id="Package\Transform and transfer.Paths[Ausgabe der OLE DB-Quelle]"
-          TopLeft="101.5,50.5">
+          Id="Package\Transform and transfer.Paths[Ausgabe der OLE DB-Quelle1]"
+          TopLeft="334.5,55">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,101"
+              EndConnector="26.5,88.5"
               Start="0,0"
-              End="0,93.5">
+              End="26.5,81">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,93.5" />
+                    End="0,40.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.25"
+                    Point2="0,44.25"
+                    Point3="4,44.25" />
+                  <mssgle:LineSegment
+                    End="22.5,44.25" />
+                  <mssgle:CubicBezierSegment
+                    Point1="22.5,44.25"
+                    Point2="26.5,44.25"
+                    Point3="26.5,48.25" />
+                  <mssgle:LineSegment
+                    End="26.5,81" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Transform and transfer.Paths[Ausgabe der OLE DB-Quelle]"
+          TopLeft="102,50.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="30,93.5"
+              Start="0,0"
+              End="30,86">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.75"
+                    Point2="0,46.75"
+                    Point3="4,46.75" />
+                  <mssgle:LineSegment
+                    End="26,46.75" />
+                  <mssgle:CubicBezierSegment
+                    Point1="26,46.75"
+                    Point2="30,46.75"
+                    Point3="30,50.75" />
+                  <mssgle:LineSegment
+                    End="30,86" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and transfer\Quelle 0 - Shippers">
+    design-time-name="Package\Transform and transfer\Quelle 0 - Employees">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1820,7 +2931,23 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Transform and transfer\Ziel 0 - Shippers">
+    design-time-name="Package\Transform and transfer\Ziel 0 - Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and transfer\Quelle 0 - Customers">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Transform and transfer\Ziel 0 - Employees">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>

@@ -18,7 +18,7 @@ namespace MsSsisPackageFactory
             IConfigurationProvider configurationProvider = new ConfigdataManager();
             IMetadataProvider metadataProvider = new DbMetadataManager(configurationProvider.CurrentConfiguration.Database.ConnectionString);
             IConsistencyValidator validator = new ConsistencyValidator();
-            IPackageBuilder packageBuilder = new DtsxFileFactory(configurationProvider, metadataProvider);
+            IPackageBuilder packageBuilder = new DtsxFileBuilder(configurationProvider, metadataProvider);
 
             (new FactoryController(metadataProvider, configurationProvider, validator, packageBuilder)).Run();
         }

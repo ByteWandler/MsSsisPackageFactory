@@ -3,7 +3,7 @@
 
 	<!-- Pfade zu Template und Ausgabe -->
 	<TemplateFileName>../../../../MsSsisPackageFactoryTemplate/replicateDbTemplate.dtsx</TemplateFileName>
-	<OutputDirectory>.\GeneratedPackages</OutputDirectory>
+	<OutputDirectory>../../../../MsSsisPackageFactoryTemplate/GeneratedPackages</OutputDirectory>
 
 	<!-- Datenbankverbindung -->
 	<Database>
