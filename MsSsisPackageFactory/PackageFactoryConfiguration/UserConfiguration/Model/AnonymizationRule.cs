@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace MsSsisPackageFactory.MetadataManagement.Configuration.Model
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model
 {
     public class AnonymizationRule
     {

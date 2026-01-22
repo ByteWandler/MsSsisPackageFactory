@@ -1,7 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
+using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 
-namespace MsSsisPackageFactory.MetadataManagement.DbMetadata
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata
 {
     /// <summary>
     /// Implementiert den <see cref="IMetadataProvider"/> zur Verwaltung von Datenbank-Metadaten.
@@ -88,6 +88,5 @@ namespace MsSsisPackageFactory.MetadataManagement.DbMetadata
 
             return dbMetaData;
         }
-
     }
 }

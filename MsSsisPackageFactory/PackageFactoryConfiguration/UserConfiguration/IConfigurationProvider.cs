@@ -1,6 +1,6 @@
-﻿using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
+﻿using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
 
-namespace MsSsisPackageFactory.MetadataManagement.Configuration
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration
 {
     /// <summary>
     /// Definiert den Vertrag für einen Konfigurationsanbieter innerhalb der SSIS-Package-Factory-Architektur.
@@ -23,6 +23,6 @@ namespace MsSsisPackageFactory.MetadataManagement.Configuration
         /// Anonymisierungsregeln) enthält. Der Wert ist nach der Instanziierung des Anbieters
         /// garantiert nicht <see langword="null"/>.
         /// </value>
-        UserConfiguration CurrentConfiguration { get; }
+        UserConfigurationModel CurrentConfiguration { get; }
     }
 }

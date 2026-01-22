@@ -1,18 +1,12 @@
-﻿using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Reflection;
 using System.Xml.Serialization;
 
-namespace MsSsisPackageFactory.MetadataManagement.Configuration
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration
 {
     internal class ConfigdataManager : IConfigurationProvider
     {
         private readonly string _defaultFilePath;
-        public UserConfiguration CurrentConfiguration { get; private set; }
+        public Model.UserConfigurationModel CurrentConfiguration { get; private set; }
 
         public ConfigdataManager(string configFileName = "FactoryConfig.xml")
         {
@@ -32,17 +26,17 @@ namespace MsSsisPackageFactory.MetadataManagement.Configuration
             return Path.Combine(baseDirectory, configFileName);
         }
 
-        private UserConfiguration LoadConfiguration()
+        private Model.UserConfigurationModel LoadConfiguration()
         {
             if (!File.Exists(_defaultFilePath))
             {
                 throw new FileNotFoundException($"Konfigurationsdatei nicht gefunden: {_defaultFilePath}");
             }
 
-            var serializer = new XmlSerializer(typeof(UserConfiguration));
+            var serializer = new XmlSerializer(typeof(Model.UserConfigurationModel));
             using var reader = new StreamReader(_defaultFilePath);
             object desXml = serializer.Deserialize(reader);
-            return (UserConfiguration)desXml;
+            return (Model.UserConfigurationModel)desXml;
         }
     }
 }

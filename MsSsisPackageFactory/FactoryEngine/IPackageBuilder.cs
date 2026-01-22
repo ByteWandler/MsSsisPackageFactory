@@ -1,5 +1,5 @@
-﻿using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
+﻿using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
+using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 
 namespace MsSsisPackageFactory.FactoryEngine
 {
@@ -28,6 +28,6 @@ namespace MsSsisPackageFactory.FactoryEngine
         /// Die Methode wirft keine Exceptions für Validierungsfehler; diese sollten
         /// vor dem Aufruf durch den <see cref="IConsistencyValidator"/> geprüft werden.
         /// </remarks>
-        void CreatePackage(DbMetaData dbMetaData, UserConfiguration userConfig);
+        void Build();
     }
 }

@@ -1,8 +1,8 @@
 ﻿using MsSsisPackageFactory.FactoryEngine;
-using MsSsisPackageFactory.MetadataManagement;
-using MsSsisPackageFactory.MetadataManagement.Configuration;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration;
+using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
 using MsSsisPackageFactory.Orchestration;
+using MsSsisPackageFactory.PackageFactoryConfiguration.Validation;
 
 namespace MsSsisPackageFactory
 {
@@ -15,12 +15,15 @@ namespace MsSsisPackageFactory
     {
         static void Main(string[] args)
         {
+            // Instanziiere Parameter für den FactoryController
             IConfigurationProvider configurationProvider = new ConfigdataManager();
             IMetadataProvider metadataProvider = new DbMetadataManager(configurationProvider.CurrentConfiguration.Database.ConnectionString);
             IConsistencyValidator validator = new ConsistencyValidator();
-            IPackageBuilder packageBuilder = new DtsxFileBuilder(configurationProvider, metadataProvider);
+            IPackageBuilder packageBuilder = new DtsxFileBuilder(configurationProvider.CurrentConfiguration, metadataProvider.CurrentDbMetaData);
 
-            (new FactoryController(metadataProvider, configurationProvider, validator, packageBuilder)).Run();
+            var controller = new FactoryController(metadataProvider, configurationProvider, validator, packageBuilder);
+
+            controller.PackageBuilder.Build();
         }
     }
 }

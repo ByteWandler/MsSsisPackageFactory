@@ -1,7 +1,6 @@
-﻿using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
+﻿using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 
-namespace MsSsisPackageFactory.MetadataManagement
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
 {
     /// <summary>
     /// Definiert den Vertrag für eine Komponente zur Konsistenzprüfung zwischen Datenbank-Metadaten und Benutzerkonfiguration.
@@ -27,6 +26,6 @@ namespace MsSsisPackageFactory.MetadataManagement
         /// Eine Implementierung könnte prüfen, ob alle in <paramref name="userConfig"/> aufgeführten Tabellen
         /// tatsächlich in <paramref name="dbMetaData"/> vorhanden sind.
         /// </example>
-        ValidationResult Validate(DbMetaData dbMetaData, UserConfiguration userConfig);
+        ValidationResult Validate(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig);
     }
 }

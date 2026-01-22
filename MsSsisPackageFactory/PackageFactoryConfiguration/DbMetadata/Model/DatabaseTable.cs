@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MsSsisPackageFactory.MetadataManagement.DbMetadata.Model
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
 {
     public class DatabaseTable
     {

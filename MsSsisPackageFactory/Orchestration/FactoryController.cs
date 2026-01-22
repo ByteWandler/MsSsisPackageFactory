@@ -1,7 +1,7 @@
 ﻿using MsSsisPackageFactory.FactoryEngine;
-using MsSsisPackageFactory.MetadataManagement;
-using MsSsisPackageFactory.MetadataManagement.Configuration;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration;
+using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
+using MsSsisPackageFactory.PackageFactoryConfiguration.Validation;
 
 namespace MsSsisPackageFactory.Orchestration
 {
@@ -11,10 +11,10 @@ namespace MsSsisPackageFactory.Orchestration
     /// </summary>
     public class FactoryController
     {
-        private readonly IMetadataProvider _metadataProvider;
-        private readonly IConfigurationProvider _configProvider;
-        private readonly IConsistencyValidator _validator;
-        private readonly IPackageBuilder _packageBuilder;
+        public IMetadataProvider MetadataProvider { get; private set; }
+        public IConfigurationProvider ConfigProvider { get; private set; }
+        public IConsistencyValidator Validator { get; private set; }
+        public IPackageBuilder PackageBuilder { get; private set; }
 
         /// <summary>
         /// Initialisiert eine neue Instanz des FactoryControllers mit den erforderlichen Abhängigkeiten.
@@ -26,10 +26,10 @@ namespace MsSsisPackageFactory.Orchestration
         /// </summary>
         public FactoryController(IMetadataProvider metadataProvider, IConfigurationProvider configProvider, IConsistencyValidator validator, IPackageBuilder packageBuilder)
         {
-            this._metadataProvider = metadataProvider;
-            this._configProvider = configProvider;
-            this._validator = validator;
-            this._packageBuilder = packageBuilder;
+            this.MetadataProvider = metadataProvider;
+            this.ConfigProvider = configProvider;
+            this.Validator = validator;
+            this.PackageBuilder = packageBuilder;
         }
 
         /// <summary>

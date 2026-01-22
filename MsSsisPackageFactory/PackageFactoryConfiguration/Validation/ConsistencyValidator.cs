@@ -1,16 +1,10 @@
-﻿using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 
-namespace MsSsisPackageFactory.MetadataManagement
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
 {
     internal class ConsistencyValidator : IConsistencyValidator
     {
-        public ValidationResult Validate(DbMetaData dbMetaData, UserConfiguration userConfig)
+        public ValidationResult Validate(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig)
         {
             var result = new ValidationResult();
 
@@ -27,7 +21,7 @@ namespace MsSsisPackageFactory.MetadataManagement
             return result;
         }
 
-        private void ValidateExcludedTables(DbMetaData dbMetaData, UserConfiguration userConfig, ValidationResult result)
+        private void ValidateExcludedTables(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig, ValidationResult result)
         {
             foreach (var tableName in userConfig.ExcludedTables)
             {
@@ -41,7 +35,7 @@ namespace MsSsisPackageFactory.MetadataManagement
             }
         }
 
-        private void ValidateAnonymizationRules(DbMetaData dbMetaData, UserConfiguration userConfig, ValidationResult result)
+        private void ValidateAnonymizationRules(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig, ValidationResult result)
         {
             foreach (var rule in userConfig.AnonymizationRules)
             {
@@ -71,7 +65,7 @@ namespace MsSsisPackageFactory.MetadataManagement
             }
         }
 
-        private void ValidateSchemaConsistency(UserConfiguration userConfig, ValidationResult result)
+        private void ValidateSchemaConsistency(UserConfiguration.Model.UserConfigurationModel userConfig, ValidationResult result)
         {
             // Prüfe, ob ConnectionString gesetzt ist
             if (string.IsNullOrWhiteSpace(userConfig.Database.ConnectionString))

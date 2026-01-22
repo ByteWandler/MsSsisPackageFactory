@@ -1,6 +1,6 @@
-﻿using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
+﻿using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 
-namespace MsSsisPackageFactory.MetadataManagement.DbMetadata
+namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata
 {
     /// <summary>
     /// Definiert den Vertrag für eine Komponente, die Metadaten einer Datenbank bereitstellt.

@@ -1,4 +1,4 @@
-﻿namespace MsSsisPackageFactory.MetadataManagement.DbMetadata.Model
+﻿namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
 {
     public class DbMetaData
     {

@@ -1,4 +1,4 @@
-﻿namespace MsSsisPackageFactory.MetadataManagement.DbMetadata
+﻿namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata
 {
     /// <summary>
     /// Stellt eine statische Zuordnung von SQL Server-Datentypen zu SSIS-Datentyp-Monikern bereit.

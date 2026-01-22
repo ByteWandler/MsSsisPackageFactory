@@ -1,8 +1,8 @@
 ﻿using Microsoft.Data.SqlClient;
-using MsSsisPackageFactory.MetadataManagement.Configuration;
-using MsSsisPackageFactory.MetadataManagement.Configuration.Model;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata;
-using MsSsisPackageFactory.MetadataManagement.DbMetadata.Model;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
+using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
+using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 using System.Text;
 using System.Xml;
 
@@ -13,31 +13,31 @@ namespace MsSsisPackageFactory.FactoryEngine
     /// </summary>
     internal class DtsxFileBuilder : IPackageBuilder
     {
-        private readonly IConfigurationProvider _configurations;
-        private readonly IMetadataProvider _metadata;
+        private readonly UserConfigurationModel _configurations;
+        private readonly DbMetaData _metadata;
         private readonly XmlDocument _xmlDocument;
         private readonly XmlNamespaceManager _xmlNamespaceManager;
 
-        public DtsxFileBuilder(IConfigurationProvider configurationProvider, IMetadataProvider metadataProvider)
+        public DtsxFileBuilder(UserConfigurationModel userConfiguration, DbMetaData dbMetaData)
         {
             this._xmlDocument = new XmlDocument();
-            this._configurations = configurationProvider;
-            this._metadata = metadataProvider;
+            this._configurations = userConfiguration;
+            this._metadata = dbMetaData;
 
             // XML-Namespace hinzufügen
             this._xmlNamespaceManager = new XmlNamespaceManager(this._xmlDocument.NameTable);
             this._xmlNamespaceManager.AddNamespace("DTS", "www.microsoft.com/SqlServer/Dts");
         }
 
-        public void CreatePackage(DbMetaData dbMetaData, UserConfiguration userConfig)
+        public void Build()
         {
-            this._xmlDocument.Load(userConfig.TemplateFileName);
+            this._xmlDocument.Load(this._configurations.TemplateFileName);
 
             this.WriteTransferStructureExec();
             this.WriteTransformAndTransferExec();
             this.WriteTransferSqlServerObjectsExec();
             
-            this._xmlDocument.Save(CreateNewFileName(userConfig.TemplateFileName));
+            this._xmlDocument.Save(CreateNewFileName(this._configurations.TemplateFileName));
         }
 
         private string CreateNewFileName(string oldFileName)
@@ -58,7 +58,7 @@ namespace MsSsisPackageFactory.FactoryEngine
             newFilename = $"{newFilename} {dateTime}.dtsx";
 
             // Erstelle Directory.
-            string newDir = $"{Directory.GetCurrentDirectory()}\\{this._configurations.CurrentConfiguration.OutputDirectory}";
+            string newDir = $"{Directory.GetCurrentDirectory()}\\{this._configurations.OutputDirectory}";
 
             if (!Directory.Exists(newDir))
             {
@@ -94,10 +94,10 @@ namespace MsSsisPackageFactory.FactoryEngine
             selectVar.SetAttribute("Namespace", ns, "User");
             selectVar.SetAttribute("ObjectName", ns, tableName + "_SelectCmd");
 
-            string dbName = new SqlConnectionStringBuilder(this._configurations.CurrentConfiguration.Database.ConnectionString).InitialCatalog;
-            string schema = this._configurations.CurrentConfiguration.Database.Schema;
+            string dbName = new SqlConnectionStringBuilder(this._configurations.Database.ConnectionString).InitialCatalog;
+            string schema = this._configurations.Database.Schema;
 
-            string selectCmd = "SELECT [" + string.Join("], [", columns) + "] FROM [" + dbName + "].[" + schema + "].[" + tableName + "]"; // Passe [NorthWind] an deine Source-DB an
+            string selectCmd = "SELECT [" + string.Join("], [", columns) + "] FROM [" + dbName + "].[" + schema + "].[" + tableName + "]";
             XmlElement selectValue = _xmlDocument.CreateElement("DTS:VariableValue", ns);
             selectValue.SetAttribute("DataType", ns, "8");
             selectValue.InnerText = selectCmd;
@@ -111,7 +111,7 @@ namespace MsSsisPackageFactory.FactoryEngine
         {
             XmlNode taskData = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer structure']/DTS:ObjectData/TransferSqlServerObjectsTaskData", _xmlNamespaceManager);
 
-            taskData.Attributes["TablesList"].Value = CreateDtsTablesList(this._metadata.CurrentDbMetaData.Tables);
+            taskData.Attributes["TablesList"].Value = CreateDtsTablesList(this._metadata.Tables, ExclusionLevel.NoExcludedTables);
         }
 
         private void WriteTransformAndTransferExec()
@@ -122,23 +122,27 @@ namespace MsSsisPackageFactory.FactoryEngine
             // Variablen-Node finden (für dynamische Variablen pro Tabelle)
             XmlNode variablesNode = _xmlDocument.SelectSingleNode("DTS:Executable/DTS:Variables", _xmlNamespaceManager);
 
-            foreach (DatabaseTable table in this._metadata.CurrentDbMetaData.Tables)
+            foreach (DatabaseTable table in this._metadata.Tables)
             {
-                string sourceName = $"Quelle - {table.TableName}";
-                string destinationName = $"Ziel - {table.TableName}";
+                if(this._configurations.AnonymizationRules.Any(rule => string.Equals(rule.TableName, $"{table.SchemaName}.{table.TableName}",
+                                           StringComparison.OrdinalIgnoreCase)))
+                {
+                    string sourceName = $"Quelle - {table.TableName}";
+                    string destinationName = $"Ziel - {table.TableName}";
 
-                // Variablen für diese Tabelle erstellen (dynamisch)
-                CreateVariablesForTable(variablesNode, table.TableName, table.Columns);
+                    // Variablen für diese Tabelle erstellen (dynamisch)
+                    CreateVariablesForTable(variablesNode, table.TableName, table.Columns);
 
-                // Quell-Komponente erstellen
-                XmlElement sourceComponent = CreateSourceComponent(table.TableName, table.Columns, sourceName);
+                    // Quell-Komponente erstellen
+                    XmlElement sourceComponent = CreateSourceComponent(table.TableName, table.Columns, sourceName);
 
-                // Ziel-Komponente erstellen
-                XmlElement destinationComponent = CreateTargetComponent(table.TableName, table.Columns, destinationName);
+                    // Ziel-Komponente erstellen
+                    XmlElement destinationComponent = CreateTargetComponent(table.TableName, table.Columns, destinationName);
 
-                // Füge die Komponenten an die richtige Stelle im XML-Dokument ein
-                components.AppendChild(sourceComponent);
-                components.AppendChild(destinationComponent);
+                    // Füge die Komponenten an die richtige Stelle im XML-Dokument ein
+                    components.AppendChild(sourceComponent);
+                    components.AppendChild(destinationComponent);
+                }
             }
         }
 
@@ -364,18 +368,41 @@ namespace MsSsisPackageFactory.FactoryEngine
         {
             XmlNode taskData = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transfer SQL-Server objects']/DTS:ObjectData/TransferSqlServerObjectsTaskData", _xmlNamespaceManager);
 
-            taskData.Attributes["TablesList"].Value = CreateDtsTablesList(this._metadata.CurrentDbMetaData.Tables);
+            taskData.Attributes["TablesList"].Value = CreateDtsTablesList(this._metadata.Tables, ExclusionLevel.NoExcludedTablesAndAnonymized);
         }
 
-        string CreateDtsTablesList(List<DatabaseTable> tables)
-        {
+
+
+        string CreateDtsTablesList(List<DatabaseTable> tables, ExclusionLevel exclusionLevel)
+        {                
             var stringBuilder = new StringBuilder();
             foreach (DatabaseTable table in tables)
             {
+                if (exclusionLevel == ExclusionLevel.NoExcludedTables)
+                    if (this._configurations.ExcludedTables.Contains($"{table.SchemaName}.{table.TableName}")) continue;
+
+                if (exclusionLevel == ExclusionLevel.NoExcludedTablesAndAnonymized)
+                {
+                    if (this._configurations.AnonymizationRules.Any(rule => string.Equals(rule.TableName, $"{table.SchemaName}.{table.TableName}",
+                                           StringComparison.OrdinalIgnoreCase))) continue;
+                }
+
                 string entryName = $"[{table.SchemaName}].[{table.TableName}]";
                 stringBuilder.Append($"{entryName.Length},{entryName},");
             }
             return $"{tables.Count},{stringBuilder.ToString()}";
+        }
+
+        /// <summary>
+        /// Gibt an, welche Tabellen auszuschließen sind. Bsp.: Bei der Strukturübertragung nur solche, die als Excluded angegeben wurden, 
+        /// nicht die die zu anonymisieren sind. Bei der Übertragung der SQL-Server Objekte auch solche, die zu anonymisieren sind, da
+        /// diese durch einen anderen Executable übertragen werden.
+        /// </summary>
+        enum ExclusionLevel 
+        {
+            KeepAllTables = 0,
+            NoExcludedTables = 1,
+            NoExcludedTablesAndAnonymized = 2
         }
     }
 }

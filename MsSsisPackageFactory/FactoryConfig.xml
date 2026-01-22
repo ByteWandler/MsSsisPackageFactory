@@ -7,14 +7,14 @@
 
 	<!-- Datenbankverbindung -->
 	<Database>
-		<ConnectionString>Data Source=DEW11N0PC042823\MSSQLSVR22EXP;Integrated Security=True;Initial Catalog=NorthWind;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False</ConnectionString>
+		<ConnectionString>Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Initial Catalog=NorthWind;Connect Timeout=30;Encrypt=True;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False</ConnectionString>
 		<Schema>dbo</Schema>
 	</Database>
 
 	<!-- Auszuschließende Tabellen -->
 	<ExcludedTables>
-		<Table>dbo.EmpLog</Table>
-		<Table>dbo.SysDiagrams</Table>
+		<Table>dbo.Orders</Table>
+		<Table>dbo.Region</Table>
 	</ExcludedTables>
 
 	<!-- Anonymisierungsregeln -->
