@@ -127,8 +127,18 @@ namespace MsSsisPackageFactory.FactoryEngine
             XmlNode components = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/components", _xmlNamespaceManager);
             XmlNode paths = _xmlDocument.SelectSingleNode(@"//DTS:Executable[@DTS:refId='Package\Transform and transfer']/DTS:ObjectData/pipeline/paths", _xmlNamespaceManager);
 
+            // Entferne zunächst alle components
+            components.RemoveAll();
+
+            // Entferne zunächst alle paths
+            paths.RemoveAll();
+
             // Variablen-Node finden (für dynamische Variablen pro Tabelle)
             XmlNode variablesNode = _xmlDocument.SelectSingleNode("DTS:Executable/DTS:Variables", _xmlNamespaceManager);
+
+            RemoveVariables(variablesNode);
+
+            int counter = 0;
 
             foreach (DatabaseTable table in this._metadata.Tables)
             {
@@ -147,9 +157,14 @@ namespace MsSsisPackageFactory.FactoryEngine
                     // Ziel-Komponente erstellen
                     XmlElement destinationComponent = CreateTargetComponent(table.TableName, table.Columns, destinationName);
 
+                    // Path-Komponente erstellen
+                    XmlElement pathComponent = CreatePath(sourceName, destinationName, counter);
+
                     // Füge die Komponenten an die richtige Stelle im XML-Dokument ein
                     components.AppendChild(sourceComponent);
                     components.AppendChild(destinationComponent);
+                    paths.AppendChild(pathComponent);
+                    counter++;
                 }
             }
         }
@@ -323,6 +338,40 @@ namespace MsSsisPackageFactory.FactoryEngine
             return component;
         }
 
+        XmlElement CreatePath(string sourceName, string destinationName, int counter)
+        {
+            XmlElement path = _xmlDocument.CreateElement("path");
+            path.SetAttribute("refId", $"Package\\Transform and transfer.Paths[Ausgabe der OLE DB-Quelle{counter}]");
+            path.SetAttribute("endId", $"Package\\Transform and transfer\\{destinationName}.Inputs[Eingabe des OLE DB-Ziels]");
+            path.SetAttribute("name", "Ausgabe der OLE DB-Quelle");
+            path.SetAttribute("startId", $"Package\\Transform and transfer\\{sourceName}.Outputs[Ausgabe der OLE DB-Quelle]");
+
+            return path;
+        }
+
+        void RemoveVariables(XmlNode variablesNode)
+        {
+            List<XmlNode> removables = new List<XmlNode>();
+            // Entferne Tabellenvariablen (Es existieren nur solche für zu anonymisierende Tabellen.
+            foreach (XmlNode variableNode in variablesNode.ChildNodes)
+            {
+                bool isSelectCmdVariable = variableNode.Attributes["DTS:ObjectName"].Value.EndsWith("_SelectCmd");
+                bool isDestNameVariable = variableNode.Attributes["DTS:ObjectName"].Value.EndsWith("_DestName");
+
+                // Entferne Template-Variablen
+                if (isSelectCmdVariable || isDestNameVariable)
+                {
+                    removables.Add(variableNode);
+                    //variablesNode.RemoveChild(variableNode);
+                }
+            }
+
+            foreach (XmlNode removable in removables)
+            {
+                variablesNode.RemoveChild(removable);
+            }
+
+        }
         #region WriteTransformAndTransferExec HelpersHelpers
         private void AddInputColumn(XmlElement inputColumns, string colName, string componentName, string dataType, string externalMetadataColumnId, string lineageId, int length=50)
         {
