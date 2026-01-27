@@ -1,10 +1,11 @@
 ﻿using Microsoft.Data.SqlClient;
-using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration;
-using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
 using System.Text;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace MsSsisPackageFactory.FactoryEngine
 {
@@ -102,10 +103,7 @@ namespace MsSsisPackageFactory.FactoryEngine
             selectVar.SetAttribute("Namespace", ns, "User");
             selectVar.SetAttribute("ObjectName", ns, tableName + "_SelectCmd");
 
-            string dbName = new SqlConnectionStringBuilder(this._configurations.Database.ConnectionString).InitialCatalog;
-            string schema = this._configurations.Database.Schema;
-
-            string selectCmd = "SELECT [" + string.Join("], [", columns) + "] FROM [" + dbName + "].[" + schema + "].[" + tableName + "]";
+            string selectCmd = CreateSelectCmd(tableName, columns);
             XmlElement selectValue = _xmlDocument.CreateElement("DTS:VariableValue", ns);
             selectValue.SetAttribute("DataType", ns, "8");
             selectValue.InnerText = selectCmd;
@@ -113,6 +111,24 @@ namespace MsSsisPackageFactory.FactoryEngine
 
             variablesNode.AppendChild(destVar);
             variablesNode.AppendChild(selectVar);
+        }
+
+        private string CreateSelectCmd(string tableName, List<TableColumn> columns)
+        {
+            string schema = this._configurations.Database.Schema;
+            string dbName = new SqlConnectionStringBuilder(this._configurations.Database.ConnectionString).InitialCatalog;
+            List<string> newColumnsNames = new List<string>();
+
+            foreach(TableColumn column in columns)
+            {
+                bool shouldAnonymize = this._configurations.AnonymizationRules.Any(
+                    rule => string.Equals(rule.ColumnName, column.ColumnName, StringComparison.OrdinalIgnoreCase)
+                    && string.Equals(rule.TableName, $"{schema}.{tableName}", StringComparison.OrdinalIgnoreCase));
+
+                newColumnsNames.Add(shouldAnonymize ? $"'**********' {column.ColumnName}" : $"{column.ColumnName}");
+            }
+
+            return $"SELECT {string.Join(",", newColumnsNames)} FROM [{dbName}].[{schema}].[{tableName}]";
         }
 
         private void WriteTransferStructureExec()
