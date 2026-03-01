@@ -1,10 +1,11 @@
 ﻿using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
+using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
 
 namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
 {
     internal class ConsistencyValidator : IConsistencyValidator
     {
-        public ValidationResult Validate(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig)
+        public ValidationResult Validate(DbMetaData dbMetaData, UserConfigurationModel userConfig)
         {
             var result = new ValidationResult();
 
@@ -21,7 +22,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
             return result;
         }
 
-        private void ValidateExcludedTables(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig, ValidationResult result)
+        private void ValidateExcludedTables(DbMetaData dbMetaData, UserConfigurationModel userConfig, ValidationResult result)
         {
             foreach (var tableName in userConfig.ExcludedTables)
             {
@@ -35,7 +36,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
             }
         }
 
-        private void ValidateAnonymizationRules(DbMetaData dbMetaData, UserConfiguration.Model.UserConfigurationModel userConfig, ValidationResult result)
+        private void ValidateAnonymizationRules(DbMetaData dbMetaData, UserConfigurationModel userConfig, ValidationResult result)
         {
             foreach (var rule in userConfig.AnonymizationRules)
             {
@@ -62,10 +63,15 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
                 {
                     result.AddWarning($"Anonymisierungsregel: Unbekannte Methode '{rule.Method}' für {schema}.{table}.{rule.ColumnName}");
                 }
+
+                if (userConfig.ExcludedTables.Contains(rule.TableName))
+                {
+                    result.AddError($"Anonymisierungsregel: Tabelle '{rule.TableName}', deren Spalte '{rule.ColumnName}' anonymisiert werden soll, kann nicht gleichzeitig zu ExcludedTables gehören.");
+                }
             }
         }
 
-        private void ValidateSchemaConsistency(UserConfiguration.Model.UserConfigurationModel userConfig, ValidationResult result)
+        private void ValidateSchemaConsistency(UserConfigurationModel userConfig, ValidationResult result)
         {
             // Prüfe, ob ConnectionString gesetzt ist
             if (string.IsNullOrWhiteSpace(userConfig.Database.ConnectionString))

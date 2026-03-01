@@ -18,15 +18,29 @@
 
 	<!-- Auszuschließende Tabellen -->
 	<ExcludedTables>
+		<Table>dbo.CustomerCustomerDemo</Table>
+		<Table>dbo.CustomerDemographics</Table>
+		<Table>dbo.Employees</Table>
+		<Table>dbo.EmployeeTerritories</Table>
+		<Table>dbo.Order Details</Table>
 		<Table>dbo.Orders</Table>
+		<Table>dbo.Products</Table>
 		<Table>dbo.Region</Table>
+		<Table>dbo.Shippers</Table>
+		<Table>dbo.Suppliers</Table>
+		<Table>dbo.Territories</Table>
 	</ExcludedTables>
 
 	<!-- Anonymisierungsregeln -->
 	<AnonymizationRules>
 		<Rule>
+			<TableName>dbo.Categories</TableName>
+			<ColumnName>Description</ColumnName>
+			<Method>Mask</Method>
+		</Rule>
+		<Rule>
 			<TableName>dbo.Customers</TableName>
-			<ColumnName>Phone</ColumnName>
+			<ColumnName>Region</ColumnName>
 			<Method>Mask</Method>
 		</Rule>
 	</AnonymizationRules>

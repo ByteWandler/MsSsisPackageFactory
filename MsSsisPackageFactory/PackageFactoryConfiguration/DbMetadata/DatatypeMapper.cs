@@ -31,7 +31,7 @@
             {"real", "r4"},
             {"uniqueidentifier", "guid"},
             {"varbinary", "byte[]"},
-            {"image", "byte[]"}
+            {"image", "image"}
         };
 
         /// <summary>

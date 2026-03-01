@@ -1,0 +1,13 @@
+# Important Rules (https://git-scm.com/docs/gitignore):
+# A blank line matches no files, so it can serve as a separator for readability.
+# A line starting with # serves as a comment. Put a backslash ("\") in front of the first hash for patterns that begin with a hash.
+# If there is a separator at the beginning or middle (or both) of the pattern, then the pattern is relative to the directory level of the particular .gitignore file itself. Otherwise the pattern may also match at any level below the .gitignore level.
+#  If there is a separator at the end of the pattern then the pattern will only match directories, otherwise the pattern can match both files and directories.
+# For example, a pattern doc/frotz/ matches doc/frotz directory, but not a/doc/frotz directory; however frotz/ matches frotz and a/frotz that is a directory (all paths are relative from the .gitignore file).
+# An asterisk "*" matches anything except a slash. The character "?" matches any one character except "/". The range notation, e.g. [a-zA-Z], can be used to match one of the characters in a range. See fnmatch(3) and the FNM_PATHNAME flag for a more detailed description.
+# A backslash ("\") can be used to escape any character. E.g., "\*" matches a literal asterisk (and "\a" matches "a", even though there is no need for escaping there). As with fnmatch(3), a backslash at the end of a pattern is an invalid pattern that never matches.
+
+.vs/
+bin/
+obj/
+#.gitignore

@@ -15,7 +15,17 @@ namespace MsSsisPackageFactory
     {
         static void Main(string[] args)
         {
-            new FactoryController().PackageBuilder.Build();
+            FactoryController fController = new();
+            ValidationResult vResult = fController.Validator.Validate(fController.MetadataProvider.CurrentDbMetaData, fController.ConfigProvider.CurrentConfiguration);
+            if (vResult.IsValid)
+            {
+                fController.PackageBuilder.Build(); 
+            }
+            else
+            {
+                Console.WriteLine($"Consistencyvalidation-Error: {string.Join(",", vResult.Errors)}");
+                Console.ReadKey();
+            }
         }
     }
 }
