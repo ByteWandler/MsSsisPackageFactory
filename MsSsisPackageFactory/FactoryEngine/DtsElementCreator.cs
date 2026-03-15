@@ -2,7 +2,7 @@
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
-using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Xml;
 
 namespace MsSsisPackageFactory.FactoryEngine
@@ -19,7 +19,6 @@ namespace MsSsisPackageFactory.FactoryEngine
             this._metadata = dbMetaData;
             this._xmlNamespaceManager = xmlNamespaceManager;
         }
-
 
         internal XmlNode Create_TransformAndTransferNode(XmlNode pipelineTemplateNode)
         {
