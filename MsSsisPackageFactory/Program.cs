@@ -8,9 +8,9 @@ namespace MsSsisPackageFactory
     /// und des potenziellen Aufbaus bei Erweiterung. Für rein funktionale Implementierung wird das KISS-Prinzip empfohlen (Keep It Simple and Stupid).
     /// Das ist der Kern von Übersichtlichkeit und Wartbarkeit.
     /// </summary>
-    internal class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             FactoryController fController = new();
             ValidationResult vResult = fController.Validator.Validate(fController.MetadataProvider.CurrentDbMetaData, fController.ConfigProvider.CurrentConfiguration);
