@@ -1,12 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
-using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration;
 using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
 using System.Globalization;
-using System.Text;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace MsSsisPackageFactory.FactoryEngine
 {
