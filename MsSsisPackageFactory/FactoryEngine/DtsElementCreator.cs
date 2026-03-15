@@ -2,7 +2,6 @@
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata;
 using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
-using System.Runtime.CompilerServices;
 using System.Xml;
 
 namespace MsSsisPackageFactory.FactoryEngine

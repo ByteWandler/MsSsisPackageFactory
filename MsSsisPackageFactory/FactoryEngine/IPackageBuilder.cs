@@ -1,6 +1,3 @@
-﻿using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
-using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
-
 namespace MsSsisPackageFactory.FactoryEngine
 {
     /// <summary>
