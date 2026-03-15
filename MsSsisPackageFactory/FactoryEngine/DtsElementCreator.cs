@@ -7,6 +7,12 @@ using System.Xml;
 
 namespace MsSsisPackageFactory.FactoryEngine
 {
+    /// <summary>
+    /// Diese Klasse stellt Logik bereit, um einzelne XML-Elemente der DTS-Templatedatei zu generieren.
+    /// Eine Methode generiert jeweils ein spezifisches XML-Element. Dafür nimmt sie das entsprechend XML-Element der DTS-Templatedatei
+    /// in Form einer <see cref="XmlNode"/> als Parameter entgegen und ersetzt die Template-Teile. Die Logik ist abhängig von der Struktur der
+    /// DTS-Templatedatei.
+    /// </summary>
     internal class DtsElementCreator
     {
         private readonly UserConfigurationModel _configurations;
