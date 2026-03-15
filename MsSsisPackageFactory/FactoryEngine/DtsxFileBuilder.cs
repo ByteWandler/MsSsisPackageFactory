@@ -16,7 +16,7 @@ namespace MsSsisPackageFactory.FactoryEngine
         private readonly XmlNamespaceManager _xmlNamespaceManager;
         private readonly DtsElementCreator _dtsElementCreator;
 
-        public DtsxFileBuilder(UserConfigurationModel userConfiguration, DbMetaData dbMetaData)
+        internal DtsxFileBuilder(UserConfigurationModel userConfiguration, DbMetaData dbMetaData)
         {
             this._xmlDocument = new XmlDocument();
             this._configurations = userConfiguration;
