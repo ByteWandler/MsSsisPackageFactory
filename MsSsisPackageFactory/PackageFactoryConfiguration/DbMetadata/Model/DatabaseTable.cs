@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
 {
-    public class DatabaseTable
+    internal class DatabaseTable
     {
-        public string SchemaName { get; set; } = string.Empty;
-        public string TableName { get; set; } = string.Empty;
-        public List<TableColumn> Columns { get; set; } = new();
-
-        public string FullName => $"{SchemaName}.{TableName}";
+        internal string SchemaName { get; set; } = string.Empty;
+        internal string TableName { get; set; } = string.Empty;
+        internal List<TableColumn> Columns { get; set; } = new();
+        internal string FullName => $"{SchemaName}.{TableName}";
     }
 }
