@@ -74,7 +74,16 @@ namespace MsSsisPackageFactory.FactoryEngine
             newFilename = $"{newFilename} {dateTime}.dtsx";
 
             // Erstelle Directory.
-            string newDir = $"{Directory.GetCurrentDirectory()}\\{this._configurations.OutputDirectory}";
+            string newDir = string.Empty;
+
+            if (Path.IsPathFullyQualified(this._configurations.OutputDirectory))
+            {
+                newDir = this._configurations.OutputDirectory;
+            }
+            else
+            {
+                newDir = $"{Directory.GetCurrentDirectory()}{Path.DirectorySeparatorChar}{this._configurations.OutputDirectory}";
+            }                
 
             if (!Directory.Exists(newDir))
             {
