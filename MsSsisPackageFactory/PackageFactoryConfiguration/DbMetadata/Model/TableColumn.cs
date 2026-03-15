@@ -1,13 +1,13 @@
 ﻿namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
 {
-    public class TableColumn
+    internal class TableColumn
     {
-        public string ColumnName { get; set; } = string.Empty;
-        public string DataType { get; set; } = string.Empty;
-        public int MaxLength { get; set; }
-        public bool IsNullable { get; set; }
+        internal string ColumnName { get; set; } = string.Empty;
+        internal string DataType { get; set; } = string.Empty;
+        internal int MaxLength { get; set; }
+        internal bool IsNullable { get; set; }
 
-        public string FullDescription
+        internal string FullDescription
         {
             get
             {

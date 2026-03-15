@@ -2,15 +2,15 @@
 
 namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model
 {
-    public class DatabaseSettings
+    internal class DatabaseSettings
     {
         [XmlElement("ConnectionString")]
-        public string ConnectionString { get; set; } = "Server=.;Database=Northwind;Trusted_Connection=True;";
+        internal string ConnectionString { get; set; } = "Server=.;Database=Northwind;Trusted_Connection=True;";
 
         [XmlElement("Schema")]
-        public string Schema { get; set; } = "dbo";
+        internal string Schema { get; set; } = "dbo";
 
         // Hilfsmethode für einfachen Zugriff
-        public string GetDefaultSchema() => string.IsNullOrEmpty(Schema) ? "dbo" : Schema;
+        internal string GetDefaultSchema() => string.IsNullOrEmpty(Schema) ? "dbo" : Schema;
     }
 }

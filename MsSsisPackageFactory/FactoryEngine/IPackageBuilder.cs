@@ -1,11 +1,11 @@
-namespace MsSsisPackageFactory.FactoryEngine
+﻿namespace MsSsisPackageFactory.FactoryEngine
 {
     /// <summary>
     /// Definiert den Vertrag für eine Komponente, die SSIS-Pakete generiert.
     /// Dieses Interface abstrahiert die konkrete Implementierung der Paketerstellung
     /// und ermöglicht so eine lose Kopplung innerhalb der Factory-Architektur.
     /// </summary>
-    public interface IPackageBuilder
+    internal interface IPackageBuilder
     {
         /// <summary>
         /// Erstellt ein SSIS-Paket basierend auf Datenbank-Metadaten und Benutzerkonfiguration.

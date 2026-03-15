@@ -3,7 +3,7 @@
     /// <summary>
     /// Stellt eine statische Zuordnung von SQL Server-Datentypen zu SSIS-Datentyp-Monikern bereit.
     /// </summary>
-    public class DatatypeMapper
+    internal class DatatypeMapper
     {
         private static readonly Dictionary<string, string> _typeMap = new()
         {
@@ -39,7 +39,7 @@
         /// </summary>
         /// <param name="sqlDataType">Der SQL Server-Datentyp, z.B. "nvarchar(50)" oder "int".</param>
         /// <returns>Den zugehörigen SSIS-Datentyp-Moniker (z.B. "wstr"). Bei unbekannten Typen wird "wstr" als Fallback zurückgegeben.</returns>
-        public static string GetSsisDataType(string sqlDataType)
+        internal static string GetSsisDataType(string sqlDataType)
         {
             // Normalisiere: entferne Längenangabe wie '(50)' und konvertiere zu Lowercase
             string normalizedType = sqlDataType.ToLowerInvariant().Split('(')[0].Trim();

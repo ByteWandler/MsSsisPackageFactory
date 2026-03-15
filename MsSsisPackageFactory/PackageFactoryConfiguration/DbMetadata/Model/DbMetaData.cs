@@ -1,11 +1,11 @@
 ﻿namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
 {
-    public class DbMetaData
+    internal class DbMetaData
     {
-        public List<DatabaseTable> Tables { get; set; } = new();
+        internal List<DatabaseTable> Tables { get; set; } = new();
 
         // Hilfsmethoden für einfachen Zugriff
-        public DatabaseTable GetTable(string schemaName, string tableName)
+        internal DatabaseTable GetTable(string schemaName, string tableName)
         {
             foreach (DatabaseTable table in Tables)
             {
@@ -17,9 +17,9 @@
             }
             return null;
         }
-            
 
-        public bool TableExists(string schemaName, string tableName)
+
+        internal bool TableExists(string schemaName, string tableName)
         {
             foreach(DatabaseTable table in Tables)
             {

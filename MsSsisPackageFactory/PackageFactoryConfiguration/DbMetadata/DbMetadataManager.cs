@@ -22,7 +22,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata
         private readonly string _connectionString;
         public DbMetaData CurrentDbMetaData { get; private set; }
 
-        public DbMetadataManager(string connectionString)
+        internal DbMetadataManager(string connectionString)
         {
             _connectionString = connectionString;
             CurrentDbMetaData = LoadMetadata();

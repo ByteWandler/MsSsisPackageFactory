@@ -1,4 +1,4 @@
-using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
+﻿using MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model;
 using MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model;
 using System.Globalization;
 using System.Xml;
@@ -129,7 +129,7 @@ namespace MsSsisPackageFactory.FactoryEngine
             _xmlDocument["DTS:Executable"].ReplaceChild(variablesNode, variablesTemplateNode);
         }
 
-        string CreateDtsTablesList(List<DatabaseTable> tables, ExclusionLevel exclusionLevel)
+        private string CreateDtsTablesList(List<DatabaseTable> tables, ExclusionLevel exclusionLevel)
         {                
             var listTableEntries = new List<string>();
                     
@@ -158,7 +158,7 @@ namespace MsSsisPackageFactory.FactoryEngine
         /// nicht die die zu anonymisieren sind. Bei der Übertragung der SQL-Server Objekte auch solche, die zu anonymisieren sind, da
         /// diese durch einen anderen Executable übertragen werden.
         /// </summary>
-        enum ExclusionLevel 
+        private enum ExclusionLevel 
         {
             KeepAllTables = 0,
             NoExcludedTables = 1,

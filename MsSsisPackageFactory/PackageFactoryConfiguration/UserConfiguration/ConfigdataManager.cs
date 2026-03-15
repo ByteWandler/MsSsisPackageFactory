@@ -9,7 +9,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration
         private readonly string _defaultFilePath;
         public UserConfigurationModel CurrentConfiguration { get; private set; }
 
-        public ConfigdataManager(string configFileName = "FactoryConfig.xml")
+        internal ConfigdataManager(string configFileName = "FactoryConfig.xml")
         {
             _defaultFilePath = GetFQFN(configFileName);
             CurrentConfiguration = LoadConfiguration();

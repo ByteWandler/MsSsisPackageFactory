@@ -2,15 +2,15 @@
 
 namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration.Model
 {
-    public class AnonymizationRule
+    internal class AnonymizationRule
     {
         [XmlElement("TableName")]
-        public string TableName { get; set; } = string.Empty;
+        internal string TableName { get; set; } = string.Empty;
 
         [XmlElement("ColumnName")]
-        public string ColumnName { get; set; } = string.Empty;
+        internal string ColumnName { get; set; } = string.Empty;
 
         [XmlElement("Method")]
-        public string Method { get; set; } = string.Empty; // "Mask", "Hash", etc.
+        internal string Method { get; set; } = string.Empty; // "Mask", "Hash", etc.
     }
 }

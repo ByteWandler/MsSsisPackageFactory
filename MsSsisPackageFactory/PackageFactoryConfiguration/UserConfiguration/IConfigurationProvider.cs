@@ -12,7 +12,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.UserConfiguration
     /// Eine Implementierung ist dafür verantwortlich, die zur Laufzeit gültige Benutzerkonfiguration
     /// einmalig zu laden und über diese schreibgeschützte Eigenschaft verfügbar zu machen.
     /// </remarks>
-    public interface IConfigurationProvider
+    internal interface IConfigurationProvider
     {
         // <summary>
         /// Ruft die aktuell gültige Benutzerkonfiguration ab.

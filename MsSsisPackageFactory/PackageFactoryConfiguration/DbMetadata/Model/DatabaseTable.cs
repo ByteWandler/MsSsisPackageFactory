@@ -1,4 +1,4 @@
-namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
+﻿namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata.Model
 {
     internal class DatabaseTable
     {

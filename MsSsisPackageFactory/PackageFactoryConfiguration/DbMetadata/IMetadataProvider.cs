@@ -10,7 +10,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.DbMetadata
     /// (Schema) der Ziel-Datenbank verantwortlich, wie z. B. Tabellen, Spalten und Datentypen.
     /// Im Prototyp kann dies durch eine Mock-Implementierung mit statischen Testdaten realisiert werden.
     /// </remarks>
-    public interface IMetadataProvider
+    internal interface IMetadataProvider
     {
         /// <summary>
         /// Ruft die aktuell geladenen Datenbank-Metadaten ab.

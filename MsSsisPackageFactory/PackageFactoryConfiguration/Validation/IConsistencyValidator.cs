@@ -11,7 +11,7 @@ namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
     /// mit der tatsächlichen Struktur der Zieldatenbank kompatibel sind.
     /// Dies ist ein wesentlicher Schritt, um Laufzeitfehler aufgrund inkonsistenter Konfigurationen zu vermeiden.
     /// </remarks>
-    public interface IConsistencyValidator
+    internal interface IConsistencyValidator
     {
         /// <summary>
         /// Prüft, ob die angegebene Benutzerkonfiguration mit den gegebenen Datenbank-Metadaten konsistent ist.

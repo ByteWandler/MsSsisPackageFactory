@@ -9,12 +9,12 @@ namespace MsSsisPackageFactory.Orchestration
     /// Der zentrale Controller (Orchestrator) für die SSIS-Package-Factory.
     /// Koordiniert den Ablauf der Paketgenerierung: lädt Daten, validiert sie und startet die Erstellung.
     /// </summary>
-    public class FactoryController
+    internal class FactoryController
     {
-        public IMetadataProvider MetadataProvider { get; private set; }
-        public IConfigurationProvider ConfigProvider { get; private set; }
-        public IConsistencyValidator Validator { get; private set; }
-        public IPackageBuilder PackageBuilder { get; private set; }
+        internal IMetadataProvider MetadataProvider { get; private set; }
+        internal IConfigurationProvider ConfigProvider { get; private set; }
+        internal IConsistencyValidator Validator { get; private set; }
+        internal IPackageBuilder PackageBuilder { get; private set; }
 
         /// <summary>
         /// Initialisiert eine neue Instanz des FactoryControllers mit den erforderlichen Abhängigkeiten.
@@ -24,7 +24,7 @@ namespace MsSsisPackageFactory.Orchestration
         /// <param name="validator">Prüft die Konsistenz zwischen Metadaten und Konfiguration.</param>
         /// <param name="packageBuilder">Hauptkomponente zur Generierung des SSIS-Pakets. (HINWEIS: Wird in Run() aktuell umgangen)</param>
         /// </summary>
-        public FactoryController()
+        internal FactoryController()
         {
             this.ConfigProvider = new ConfigdataManager();
             this.MetadataProvider = new DbMetadataManager(this.ConfigProvider.CurrentConfiguration.Database.ConnectionString);

@@ -2,16 +2,16 @@
 
 namespace MsSsisPackageFactory.PackageFactoryConfiguration.Validation
 {
-    public class ValidationResult
+    internal class ValidationResult
     {
-        public bool IsValid { get; set; }
-        public List<string> Errors { get; set; } = new();
-        public List<string> Warnings { get; set; } = new();
+        internal bool IsValid { get; set; }
+        internal List<string> Errors { get; set; } = new();
+        internal List<string> Warnings { get; set; } = new();
 
-        public void AddError(string message) => Errors.Add(message);
-        public void AddWarning(string message) => Warnings.Add(message);
+        internal void AddError(string message) => Errors.Add(message);
+        internal void AddWarning(string message) => Warnings.Add(message);
 
-        public string GetSummary()
+        internal string GetSummary()
         {
             var sb = new StringBuilder();
 
