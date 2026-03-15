@@ -423,7 +423,6 @@ namespace MsSsisPackageFactory.FactoryEngine
             variablesNode.AppendChild(selectVar);
         }
 
-        #region WriteTransformAndTransferExec HelpersHelpers
         private string CreateSelectCmd(string tableName, List<TableColumn> columns)
         {
             string schema = this._configurations.Database.Schema;
@@ -442,58 +441,6 @@ namespace MsSsisPackageFactory.FactoryEngine
             return $"SELECT {string.Join(",", newColumnsNames)} FROM [{dbName}].[{schema}].[{tableName}]";
         }
 
-        private void AddInputColumn(XmlNode pipelineTemplateNode, XmlElement inputColumns, string colName, string componentName, string dataType, string externalMetadataColumnId, string lineageId, int length = 50)
-        {
-            XmlElement col = pipelineTemplateNode.OwnerDocument.CreateElement("inputColumn");
-            col.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels].Columns[{componentName}]"); // Dynamisch anpassen
-            col.SetAttribute("cachedDataType", dataType);
-            if (dataType.Equals("wstr")) col.SetAttribute("cachedLength", length.ToString());
-            col.SetAttribute("cachedName", colName);
-            col.SetAttribute("externalMetadataColumnId", externalMetadataColumnId);
-            col.SetAttribute("lineageId", lineageId);
-            inputColumns.AppendChild(col);
-        }
-
-        private void AddExternalMetadataColumn(XmlNode pipelineTemplateNode, XmlElement externalColumns, string colName, string componentName, string dataType, int length = 50)
-        {
-            XmlElement col = pipelineTemplateNode.OwnerDocument.CreateElement("externalMetadataColumn");
-            col.SetAttribute("refId", $"Package\\Transform and transfer\\{componentName}.Inputs[Eingabe des OLE DB-Ziels].ExternalColumns[{colName}]"); // Dynamisch anpassen
-            col.SetAttribute("dataType", dataType);
-            if (dataType.Equals("wstr")) col.SetAttribute("length", length.ToString());
-            col.SetAttribute("name", colName);
-            externalColumns.AppendChild(col);
-        }
-
-        private void AddProperty(XmlNode pipelineTemplateNode, XmlElement properties, string name, string value, string dataType, string description, string uiTypeEditor = null, string typeConverter = null)
-        {
-            XmlElement prop = pipelineTemplateNode.OwnerDocument.CreateElement("property");
-            prop.SetAttribute("dataType", dataType);
-            prop.SetAttribute("description", description);
-            prop.SetAttribute("name", name);
-            if (uiTypeEditor != null) prop.SetAttribute("UITypeEditor", uiTypeEditor);
-            if (typeConverter != null) prop.SetAttribute("typeConverter", typeConverter);
-            prop.InnerText = value;
-            properties.AppendChild(prop);
-        }
-
-        private void AddOutputColumn(XmlNode outputColumnsTemplateRef, XmlNode outputColumnsClone, XmlElement outputColumns, string colName, string dataType, string lineageId, string specialFlags = null, int length = 50)
-        {
-            //XmlElement col = pipelineTemplateNode.OwnerDocument.CreateElement("outputColumn");
-            //col.SetAttribute("refId", lineageId); // Oder dynamisch anpassen
-            
-            //col.SetAttribute("dataType", dataType);
-            
-            //if (dataType.Equals("wstr")) 
-            //    col.SetAttribute("length", length.ToString());
-
-            //col.SetAttribute("lineageId", lineageId);
-            //col.SetAttribute("name", colName);
-            
-            //if (specialFlags != null) col.SetAttribute("specialFlags", specialFlags);
-            //    outputColumns.AppendChild(col);
-
-        }
-        #endregion WriteTransformAndTransferExec HelpersHelpers
         #endregion WriteTransformAndTransferExec Helpers
 
     }
