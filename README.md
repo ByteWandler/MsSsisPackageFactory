@@ -1,5 +1,13 @@
 # Microsoft SSIS-Package-Factory
 
+## Features
+- **Dynamische Package-Generierung bei Schema-Änderungen**
+    - **Für Datenbankmigration relationaler MS SQL-Server-DBs**
+    - **Z. B. Synchronisation der Datenbank zwischen Prod- & Non-Prod-Umgebung**
+- **Individuell konfigurierbare Anonymisierung (Datenschutz)**
+- **Individuell konfigurierbare Übertragungsinhalte (Performanz/Datenschutz)**
+- **On-Prem / SSIS**
+
 ## Beschreibung
 Dieses Projekt ist eine Basisversion einer SSIS-Package-Factory für die Übertragung und individuellen Anonymisierung von relationalen MS SQL-Server Datenbanken. Ihr Ziel ist es eine einfache Form der Dynamik gewährleisten, indem bei strukturellen Änderungen der Quell-DB, anstelle einer manuellen Anpassung des SSIS-Packages, ein neues Package generiert werden kann, passend zu der jeweiligen Datenbankstruktur. Die Factory funktioniert Template-basiert. Auf Basis von Benutzerkonfiguration über eine Konfigurationsdatei und den DB-Metadaten wird ein neues SSIS-Packages generiert. Die Factory baut zur Laufzeit somit eine Verbindung zur Zieldatenbank auf.
 
