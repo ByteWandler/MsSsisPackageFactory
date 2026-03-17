@@ -50,6 +50,6 @@ Ausstehend sind noch u. a. Unittests, Logging und umfänglichere Fehlerbehandlun
 
 DB-Tabellenschemata müssen korrigiert werden. Sie sollen nicht in der Konfiguration festgelegt werden, sondern aus den DB-Metadaten abgerufen werden.
 
-### Features
+### Neue Features
 - Erweiterung der individuellen Anonymisierung. (Aktuell nur masking)
 - Adapter/Connection-Manager für Nicht-MS SQL-Server-Datenbanken
