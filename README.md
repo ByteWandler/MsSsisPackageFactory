@@ -45,7 +45,11 @@ Das Tool _MsSsisPackageFactory_ wurde mit Microsoft Visual Studio Community 2022
 
 Das generierte SSIS-Package wurde zusätzlich mit SSDT (SQL-Server Data Tools) Version 2.1.2 (Preview) in Visual Studio und SQL Server-Paketausführungsprogramm (dtexec.exe) Version 17.0.1000.7 for 64-bit (unter Microsoft SQL Server Standard - Developer Edition (64-bit) Version 17.0.1050.2) erfolgreich getestet. Für den Test wurde die [NorthWind-Database](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/readme.md) von Microsoft verwendet.
 
-## Project status
+## Projektstatus / Roadmap
 Ausstehend sind noch u. a. Unittests, Logging und umfänglichere Fehlerbehandlung. 
 
 DB-Tabellenschemata müssen korrigiert werden. Sie sollen nicht in der Konfiguration festgelegt werden, sondern aus den DB-Metadaten abgerufen werden.
+
+### Features
+- Erweiterung der individuellen Anonymisierung. (Aktuell nur masking)
+- Adapter/Connection-Manager für Nicht-MS SQL-Server-Datenbanken
