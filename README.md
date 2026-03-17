@@ -5,7 +5,7 @@
     - **Für Datenbankmigration relationaler MS SQL-Server-DBs**
     - **Z. B. Synchronisation der Datenbank zwischen Prod- & Non-Prod-Umgebung**
 - **Individuell konfigurierbare Anonymisierung (Datenschutz)**
-- **Individuell konfigurierbare Übertragungsinhalte (Performanz/Datenschutz)**
+- **Individuell konfigurierbare Übertragungsinhalte (Performanz + Datenschutz)**
 - **On-Prem / SSIS**
 
 ## Beschreibung
