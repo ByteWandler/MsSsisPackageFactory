@@ -1,6 +1,6 @@
 # Microsoft SSIS-Package-Factory
 
-Minimal-Viable-Project (MVP) / Funktionaler Prototyp
+_Minimal-Viable-Project (MVP) / Funktionaler Prototyp_
 
 ## Features
 - **Dynamische Package-Generierung bei Schema-Änderungen**
