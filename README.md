@@ -1,5 +1,7 @@
 # Microsoft SSIS-Package-Factory
 
+Minimal-Viable-Project (MVP) / Funktionaler Prototyp
+
 ## Features
 - **Dynamische Package-Generierung bei Schema-Änderungen**
     - **Für Datenbankmigration relationaler MS SQL-Server-DBs**
