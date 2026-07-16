@@ -1,6 +1,15 @@
 # Microsoft SSIS-Package-Factory
 
+## Navigation
+* [Überblick & Business Value](#überblick--business-value)
+* [Technische Beschreibung](#technische-beschreibung)
+
 _Minimal-Viable-Project (MVP) / Funktionaler Prototyp_
+
+## Überblick & Business Value
+ghfobvhdubzfr
+
+
 
 ## Features
 - **Dynamische Package-Generierung bei Schema-Änderungen**
@@ -51,6 +60,9 @@ Das generierte SSIS-Package wurde zusätzlich mit SSDT (SQL-Server Data Tools) V
 Ausstehend sind noch u. a. Unittests, Logging und umfänglichere Fehlerbehandlung. 
 
 DB-Tabellenschemata müssen korrigiert werden. Sie sollen nicht in der Konfiguration festgelegt werden, sondern aus den DB-Metadaten abgerufen werden.
+
+## Technische Beschreibung
+njpwnefjiewbvhuiselbfzufhöewb
 
 ### Neue Features
 - Erweiterung der individuellen Anonymisierung. (Aktuell nur masking)
