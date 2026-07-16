@@ -1,12 +1,14 @@
 # Microsoft SSIS-Package-Factory
 
+Eine metadatengesteuerte Pipeline-Factory zur hochdynamischen ETL-Automatisierung, Paketgenerierung und datenschutzkonformen Geschäftsdatenbereitstellung im Microsoft-Ökosystem.
+
 ## Navigation
-* [Überblick & Business Value](#überblick--business-value)
-* [Technische Beschreibung](#technische-beschreibung)
+1. [Projekt-Überblick & Business-Value](#-projekt-überblick--business-value)
+2. [Technische Beschreibung](#technische-beschreibung)
 
 _Minimal-Viable-Project (MVP) / Funktionaler Prototyp_
 
-## Überblick & Business Value
+## 📋 Projekt-Überblick & Business-Value
 ghfobvhdubzfr
 
 
