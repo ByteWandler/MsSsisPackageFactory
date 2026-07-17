@@ -57,7 +57,7 @@ Ersteres enthält das eigentliche Projekt. Zweites enthält ein SSIS-Projekt als
 
 &nbsp;
 
-### 🧰 Installation und Tech-Stack:
+### 🧰 Installation & Tech-Stack:
 Für die Ausführung des Tools ist .NET 9.0 als Zielframework nötig.
 
 #### Für die Ausführung in der Entwicklungsumgebung
