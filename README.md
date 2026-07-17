@@ -4,13 +4,12 @@
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-Standard%20%7C%20Developer-0078D4?logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server/)
 [![On-Premises](https://img.shields.io/badge/On--Premises-Ready-00A4EF?logo=microsoft&logoColor=white)](https://learn.microsoft.com/sql/integration-services/)
 
-&nbsp;
-
 *Eine metadatengesteuerte Pipeline-Factory zur hochdynamischen ETL-Automatisierung, Paketgenerierung und datenschutzkonformen Geschäftsdatenbereitstellung im Microsoft-Ökosystem.*
 
 ## 📑 Inhalt
-1. [Business-Value & Projekt-Überblick](#-business-value--projekt-überblick)
-2. [Technische Beschreibung](#-technische-beschreibung)
+[Business-Value & Projekt-Überblick](#-business-value--projekt-überblick)
+
+[Technische Projektbeschreibung](#-technische-projektbeschreibung)
 
 &nbsp;
 
@@ -24,21 +23,23 @@
 * **Vollautomatisierte Nutzung:** Durch die mögliche Integration in die Pipeline-Umgebung, ist das Tool vollautomatisiert nutzbar.
 * **Einfache Nutzung als Enduser:** Die Nutzung erfordert keine Einrichtgung von Entwicklungsumgebungen oder der Kenntnis gesonderter Sprachen, wie es bei BIML der Fall ist. Die Steuerung erfolgt durch eine einfache Konfigurationsdatei.
 
+&nbsp;
+
+### 🛠️ Allgemeine Funktionsweise
+
+Das Tool agiert als dynamische Fabrik (*Factory*), die Metadaten der Datenbank einliest und daraus SSIS-Pakete erzeugt.
+
+1. **Input 1:** Die datenbank-spezifischen Metadaten werden von der spezifizierten Datenbank abgerufen, z. B. vorhandene Tabellen, Spalten oder Datentypen.
+2. **Input 2:** In der Konfigurationsdatei werden Mapping-Regeln und Anonymisierungsvorgaben festgelegt, z. B. Tabelle X Spalte Y auslassen oder Inhalt maskieren.
+3. **Input 3:** Eine generische Template-Datei der SSIS-Package-Datei enthält die Basislogik für die zu erzeugenden SSIS-Pakete.
+4. **Verarbeitung:** Die *Factory-Engine* generiert die generischen Teile des Templates auf Basis der Metadaten.
+5. **Output:** Ein SSIS-Paket (Datei), das mit der gegebenen Datenbank vollständig kompatibel ist.
+
 ___
 
 &nbsp;
 
-## 🛠️ Technische Beschreibung
-### ✨ Features:
-- **Dynamische Package-Generierung bei Schema-Änderungen**
-    - **Für Datenbankmigration relationaler MS SQL-Server-DBs**
-    - **Z. B. Synchronisation der Datenbank zwischen Prod- & Non-Prod-Umgebung**
-- **Individuell konfigurierbare Anonymisierung (Datenschutz)**
-- **Individuell konfigurierbare Übertragungsinhalte (Performanz + Datenschutz)**
-- **On-Prem / SSIS**
-  
-&nbsp;
-
+## 🛠️ Technische Projektbeschreibung
 ### 📖 Beschreibung:
 Dieses Projekt ist eine Basisversion einer SSIS-Package-Factory für die Übertragung und individuellen Anonymisierung von relationalen MS SQL-Server Datenbanken. Ihr Ziel ist es eine einfache Form der Dynamik gewährleisten, indem bei strukturellen Änderungen der Quell-DB, anstelle einer manuellen Anpassung des SSIS-Packages, ein neues Package generiert werden kann, passend zu der jeweiligen Datenbankstruktur. Die Factory funktioniert Template-basiert. Auf Basis von Benutzerkonfiguration über eine Konfigurationsdatei und den DB-Metadaten wird ein neues SSIS-Packages generiert. Die Factory baut zur Laufzeit somit eine Verbindung zur Zieldatenbank auf.
 
