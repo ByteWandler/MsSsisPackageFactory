@@ -25,7 +25,7 @@
 
 &nbsp;
 
-### 🛠️ Allgemeine Funktionsweise
+### ⚙️ Allgemeine Funktionsweise
 
 Das Tool agiert als dynamische Fabrik (*Factory*), die Metadaten der Datenbank einliest und daraus SSIS-Pakete erzeugt.
 
@@ -57,7 +57,7 @@ Ersteres enthält das eigentliche Projekt. Zweites enthält ein SSIS-Projekt als
 
 &nbsp;
 
-### 📦 Installation:
+### 🧰 Installation und Tech-Stack:
 Für die Ausführung des Tools ist .NET 9.0 als Zielframework nötig.
 
 #### Für die Ausführung in der Entwicklungsumgebung
