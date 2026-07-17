@@ -51,7 +51,9 @@ Es stellt eine Alternative zu BIML und Microsoft Fabric, unter Beschränkung auf
 &nbsp;
 
 ### 🗂️ Projektstruktur:
-Das Projekt enthält die zwei Teilprojekte _MsSsisPackageFactory_ und _MsSsisPackageFactoryTemplate_. Ersteres enthält das eigentliche Projekt. Zweites enthält ein SSIS-Projekt als Tool zur Unterstützung der Entwicklung.
+Das Projekt enthält die zwei Teilprojekte _MsSsisPackageFactory_ und _MsSsisPackageFactoryTemplate_. 
+Ersteres enthält das eigentliche Projekt. Zweites enthält ein SSIS-Projekt als Tool zur Unterstützung der Entwicklung.
+*support-scripts* enthält nützliche Code-Snippets für die Entwicklung.
 
 &nbsp;
 
