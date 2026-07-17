@@ -16,9 +16,13 @@
 
 ## 💼 Business-Value & Projekt-Überblick
 ### Kernvorteile für User:
-* **Massive Zeitersparnis:** Automatisierte Generierung statt fehleranfälliger, händischer Erstellung von SSIS-Paketen.
-* **Compliance & Datenschutz:** Integrierte Mechanismen zur Maskierung und Anonymisierung sensibler Produktionsdaten für den sicheren Einsatz in Nicht-Produktivumgebungen (DSGVO-konform).
+* **Zeitersparnis:** Automatisierte Generierung statt händischer Erstellung oder Anpassung von SSIS-Paketen.
+* **Erpart manuelle Routineaufgaben:** Manuelle Anpassungen der Datenpipelines bei Änderungen an der Datenquelle entfallen durch die Automatisierung.
+* **Reduziertes Fehlerrisiko:** Jede manuelle Code-Anpassung erhöht das Risiko Fehler einzubauen.
+* **Compliance & Datenschutz:** Integrierte konfigurierbare Mechanismen zur Anonymisierung sensibler Produktionsdaten für den sicheren Einsatz in Nicht-Produktivumgebungen.
 * **Dynamisches Schema-Management:** Automatische Anpassung an Quell- und Zielstrukturen ohne manuellen Refactoring-Aufwand der Pipeline.
+* **Vollautomatisierte Nutzung:** Durch die mögliche Integration in die Pipeline-Umgebung, ist das Tool vollautomatisiert nutzbar.
+* **Einfache Nutzung als Enduser:** Die Nutzung erfordert keine Einrichtgung von Entwicklungsumgebungen oder der Kenntnis gesonderter Sprachen, wie es bei BIML der Fall ist. Die Steuerung erfolgt durch eine einfache Konfigurationsdatei.
 
 ___
 
