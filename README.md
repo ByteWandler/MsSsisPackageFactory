@@ -16,7 +16,7 @@
 ## 💼 Business-Value & Projekt-Überblick
 ### 💡 Kernvorteile für User:
 * **Zeitersparnis:** Automatisierte Generierung statt händischer Erstellung oder Anpassung von SSIS-Paketen.
-* **Erpart manuelle Routineaufgaben:** Manuelle Anpassungen der Datenpipelines bei Änderungen an der Datenquelle entfallen durch die Automatisierung.
+* **Erspart manuelle Routineaufgaben:** Manuelle Anpassungen der Datenpipelines bei Änderungen an der Datenquelle entfallen durch die Automatisierung.
 * **Reduziertes Fehlerrisiko:** Jede manuelle Code-Anpassung erhöht das Risiko Fehler einzubauen.
 * **Compliance & Datenschutz:** Integrierte konfigurierbare Mechanismen zur Anonymisierung sensibler Produktionsdaten für den sicheren Einsatz in Nicht-Produktivumgebungen.
 * **Dynamisches Schema-Management:** Automatische Anpassung an Quell- und Zielstrukturen ohne manuellen Refactoring-Aufwand der Pipeline.
