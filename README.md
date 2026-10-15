@@ -4,6 +4,8 @@
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-Standard%20%7C%20Developer-0078D4?logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server/)
 [![On-Premises](https://img.shields.io/badge/On--Premises-Ready-00A4EF?logo=microsoft&logoColor=white)](https://learn.microsoft.com/sql/integration-services/)
 
+[![Build Status](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/build.yml/badge.svg)](https://github.com/ByteWandler/MsSsisPackageFactory/actions) [![Release](https://img.shields.io/github/v/release/ByteWandler/MsSsisPackageFactory?sort=semver)](https://github.com/ByteWandler/MsSsisPackageFactory/releases) [![License](https://img.shields.io/github/license/ByteWandler/MsSsisPackageFactory)](https://github.com/ByteWandler/MsSsisPackageFactory/blob/Main/LICENSE) [![CodeQL](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/codeql-analysis.yml) [![Codecov](https://codecov.io/gh/ByteWandler/MsSsisPackageFactory/branch/Main/graph/badge.svg)](https://codecov.io/gh/ByteWandler/MsSsisPackageFactory) [![Top language](https://img.shields.io/github/languages/top/ByteWandler/MsSsisPackageFactory)](https://github.com/ByteWandler/MsSsisPackageFactory)
+
 *Eine metadatengesteuerte Pipeline-Factory zur hochdynamischen ETL-Automatisierung, Paketgenerierung und datenschutzkonformen Geschäftsdatenbereitstellung im Microsoft-Ökosystem.*
 
 ## 📑 Inhalt
@@ -21,7 +23,7 @@
 * **Compliance & Datenschutz:** Integrierte konfigurierbare Mechanismen zur Anonymisierung sensibler Produktionsdaten für den sicheren Einsatz in Nicht-Produktivumgebungen.
 * **Dynamisches Schema-Management:** Automatische Anpassung an Quell- und Zielstrukturen ohne manuellen Refactoring-Aufwand der Pipeline.
 * **Vollautomatisierte Nutzung:** Durch die mögliche Integration in die Pipeline-Umgebung, ist das Tool vollautomatisiert nutzbar.
-* **Einfache Nutzung als Enduser:** Die Nutzung erfordert keine Einrichtgung von Entwicklungsumgebungen oder der Kenntnis gesonderter Sprachen, wie es bei BIML der Fall ist. Die Steuerung erfolgt durch eine einfache Konfigurationsdatei.
+* **Einfache Nutzung als Enduser:** Die Nutzung erfordert keine Einrichtgung von Entwicklungsumgebungen oder der Kenntnis gesonderter Sprachen, wie es bei BIML der Fall ist. Die Steuerung erfolgt durc[...]
 
 &nbsp;
 
@@ -41,9 +43,9 @@ ___
 
 ## 🛠️ Technische Projektbeschreibung
 ### 📖 Beschreibung:
-Dieses Projekt ist eine Basisversion einer SSIS-Package-Factory für die Übertragung und individuellen Anonymisierung von relationalen MS SQL-Server Datenbanken. Ihr Ziel ist es eine einfache Form der Dynamik gewährleisten, indem bei strukturellen Änderungen der Quell-DB, anstelle einer manuellen Anpassung des SSIS-Packages, ein neues Package generiert werden kann, passend zu der jeweiligen Datenbankstruktur. Die Factory funktioniert Template-basiert. Auf Basis von Benutzerkonfiguration über eine Konfigurationsdatei und den DB-Metadaten wird ein neues SSIS-Packages generiert. Die Factory baut zur Laufzeit somit eine Verbindung zur Zieldatenbank auf.
+Dieses Projekt ist eine Basisversion einer SSIS-Package-Factory für die Übertragung und individuellen Anonymisierung von relationalen MS SQL-Server Datenbanken. Ihr Ziel ist es eine einfache For[...]
 
-Es stellt eine Alternative zu BIML und Microsoft Fabric, unter Beschränkung auf die Übertragung relationaler MS SQL-Server DBs. Aufgrund dieser Beschränkung ist die Nutzung einfacher als bei BIML und es ist für OnPremisses-Verwendung geeignet im Gegensatz zu Microsoft Fabric.
+Es stellt eine Alternative zu BIML und Microsoft Fabric, unter Beschränkung auf die Übertragung relationaler MS SQL-Server DBs. Aufgrund dieser Beschränkung ist die Nutzung einfacher als bei BI[...]
 
 > [!NOTE]
 > Die Anonymisierung ist derzeit auf Maskierung beschränkt. Weitere Verfahren (z. B. Hashing, Pseudonymisierung) sind in Planung.
@@ -73,11 +75,11 @@ Erforderliche Tools:
 &nbsp;
 
 ### ▶️ Ausführung:
-Für die Verwendung der Factory ist es erforderlich den Pfad zur Template Datei _'TemplateFileName'_ und den Outputfad _'OutputDirectory'_ in der Konfigurationsdatei _'FactoryConfig.xml'_ festzulegen. Ebenso muss der ConnectionString und das Datenbankschema für die DB festgelegt werden, die als Datenquelle fungiert. 
+Für die Verwendung der Factory ist es erforderlich den Pfad zur Template Datei _'TemplateFileName'_ und den Outputfad _'OutputDirectory'_ in der Konfigurationsdatei _'FactoryConfig.xml'_ festzule[...]
 
-Optional können einzelne Tabellen festgelegt werden, die durch das Package von der Übertragung ausgeschlossen werden sollen mit _'<Table\>'_ unter '_<ExcludedTables\>_'. Zudem können auch Anonymisierungsregeln festgelegt werden, falls Spalten anonymisiert werden sollen. (Siehe Beispiele in _FactoryConfig.xml_)
+Optional können einzelne Tabellen festgelegt werden, die durch das Package von der Übertragung ausgeschlossen werden sollen mit _'<Table\>'_ unter '_<ExcludedTables\>_'. Zudem können auch Anony[...]
 
-Die Anwendung erfolgt durch Ausführung der Executable-Datei (.exe), z. B. durch Doppelklick. Es handelt sich hierbei um eine .NET-Konsolenanwendung. Für die Ausführung muss eine Verbindung zur Quelldatenbank aufgebaut werden können. Das generierte SSIS-Package wird im festgelegten _OutputPath_ abgelegt.
+Die Anwendung erfolgt durch Ausführung der Executable-Datei (.exe), z. B. durch Doppelklick. Es handelt sich hierbei um eine .NET-Konsolenanwendung. Für die Ausführung muss eine Verbindung zur [...] 
 
 Die Verwendung des generierten Packages selbst erfolgt entsprechend mit der SSIS-Engine.
 
@@ -86,7 +88,7 @@ Die Verwendung des generierten Packages selbst erfolgt entsprechend mit der SSIS
 ### ✅ Tests:
 Das Tool _MsSsisPackageFactory_ wurde mit Microsoft Visual Studio Community 2022 (64-Bit) Version 17.14.26 und .NET 9.0 getestet.
 
-Das generierte SSIS-Package wurde zusätzlich mit SSDT (SQL-Server Data Tools) Version 2.1.2 (Preview) in Visual Studio und SQL Server-Paketausführungsprogramm (dtexec.exe) Version 17.0.1000.7 for 64-bit (unter Microsoft SQL Server Standard - Developer Edition (64-bit) Version 17.0.1050.2) erfolgreich getestet. Für den Test wurde die [NorthWind-Database](https://github.com/microsoft/sql-server-samples/blob/master/samples/databases/northwind-pubs/readme.md) von Microsoft verwendet.
+Das generierte SSIS-Package wurde zusätzlich mit SSDT (SQL-Server Data Tools) Version 2.1.2 (Preview) in Visual Studio und SQL Server-Paketausführungsprogramm (dtexec.exe) Version 17.0.1000.7 fo[...]
 
 &nbsp;
 
@@ -106,4 +108,3 @@ DB-Tabellenschemata müssen korrigiert werden. Sie sollen nicht in der Konfigura
 
 ### 📄 Lizenz
 Dieses Projekt ist unter der **GNU General Public License v3.0** lizenziert – siehe die [LICENSE](LICENSE) Datei für Details.
-
