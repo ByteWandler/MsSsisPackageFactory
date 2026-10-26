@@ -3,8 +3,12 @@
 [![SSIS](https://img.shields.io/badge/SSIS-Compatible-F96302?logo=microsoftsqlserver&logoColor=white)](https://learn.microsoft.com/sql/integration-services/)
 [![SQL Server](https://img.shields.io/badge/SQL%20Server-Standard%20%7C%20Developer-0078D4?logo=microsoftsqlserver&logoColor=white)](https://www.microsoft.com/sql-server/)
 [![On-Premises](https://img.shields.io/badge/On--Premises-Ready-00A4EF?logo=microsoft&logoColor=white)](https://learn.microsoft.com/sql/integration-services/)
-
-[![Build Status](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/build.yml/badge.svg)](https://github.com/ByteWandler/MsSsisPackageFactory/actions) [![Release](https://img.shields.io/github/v/release/ByteWandler/MsSsisPackageFactory?sort=semver)](https://github.com/ByteWandler/MsSsisPackageFactory/releases) [![License](https://img.shields.io/github/license/ByteWandler/MsSsisPackageFactory)](https://github.com/ByteWandler/MsSsisPackageFactory/blob/Main/LICENSE) [![CodeQL](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/codeql-analysis.yml) [![Codecov](https://codecov.io/gh/ByteWandler/MsSsisPackageFactory/branch/Main/graph/badge.svg)](https://codecov.io/gh/ByteWandler/MsSsisPackageFactory) [![Top language](https://img.shields.io/github/languages/top/ByteWandler/MsSsisPackageFactory)](https://github.com/ByteWandler/MsSsisPackageFactory)
+[![Build Status](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/build.yml/badge.svg)](https://github.com/ByteWandler/MsSsisPackageFactory/actions)
+[![Release](https://img.shields.io/github/v/release/ByteWandler/MsSsisPackageFactory?sort=semver)](https://github.com/ByteWandler/MsSsisPackageFactory/releases)
+[![License](https://img.shields.io/github/license/ByteWandler/MsSsisPackageFactory)](https://github.com/ByteWandler/MsSsisPackageFactory/blob/Main/LICENSE)
+[![CodeQL](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/ByteWandler/MsSsisPackageFactory/actions/workflows/codeql-analysis.yml)
+[![Codecov](https://codecov.io/gh/ByteWandler/MsSsisPackageFactory/branch/Main/graph/badge.svg)](https://codecov.io/gh/ByteWandler/MsSsisPackageFactory)
+[![Top language](https://img.shields.io/github/languages/top/ByteWandler/MsSsisPackageFactory)](https://github.com/ByteWandler/MsSsisPackageFactory)
 
 *Eine metadatengesteuerte Pipeline-Factory zur hochdynamischen ETL-Automatisierung, Paketgenerierung und datenschutzkonformen Geschäftsdatenbereitstellung im Microsoft-Ökosystem.*
 
@@ -79,7 +83,7 @@ Für die Verwendung der Factory ist es erforderlich den Pfad zur Template Datei 
 
 Optional können einzelne Tabellen festgelegt werden, die durch das Package von der Übertragung ausgeschlossen werden sollen mit _'<Table\>'_ unter '_<ExcludedTables\>_'. Zudem können auch Anony[...]
 
-Die Anwendung erfolgt durch Ausführung der Executable-Datei (.exe), z. B. durch Doppelklick. Es handelt sich hierbei um eine .NET-Konsolenanwendung. Für die Ausführung muss eine Verbindung zur [...] 
+Die Anwendung erfolgt durch Ausführung der Executable-Datei (.exe), z. B. durch Doppelklick. Es handelt sich hierbei um eine .NET-Konsolenanwendung. Für die Ausführung muss eine Verbindung zur [...]
 
 Die Verwendung des generierten Packages selbst erfolgt entsprechend mit der SSIS-Engine.
 
